@@ -15,17 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMy-Oi-ohJ">
-                                <rect key="frame" x="241" y="50" width="287" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMy-Oi-ohJ">
+                                <rect key="frame" x="241" y="64" width="286" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="yvd-bW-zJu"/>
+                                </constraints>
                                 <state key="normal" title="Aggiungi report"/>
                                 <connections>
                                     <segue destination="Kcg-yx-DfW" kind="show" id="O5t-Ws-bfS"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="645-pg-QIw" customClass="FSCalendar">
-                                <rect key="frame" x="67" y="145" width="635" height="499"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="645-pg-QIw" customClass="FSCalendar">
+                                <rect key="frame" x="20" y="123" width="728" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
@@ -41,6 +42,15 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="4fT-kR-zkA"/>
+                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="241" id="7vc-Tp-oil"/>
+                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="14" id="J9n-6G-QGr"/>
+                            <constraint firstItem="645-pg-QIw" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="c1r-0R-wU4"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="645-pg-QIw" secondAttribute="bottom" constant="451" id="kTU-Ff-x9g"/>
+                            <constraint firstItem="645-pg-QIw" firstAttribute="top" secondItem="QMy-Oi-ohJ" secondAttribute="bottom" constant="8" id="pDE-OS-s9I"/>
+                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="centerX" secondItem="645-pg-QIw" secondAttribute="centerX" id="rMc-TA-bD9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" id="8JZ-Rx-kUI"/>
@@ -197,7 +207,7 @@
                     <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nEJ-JU-RtG">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
