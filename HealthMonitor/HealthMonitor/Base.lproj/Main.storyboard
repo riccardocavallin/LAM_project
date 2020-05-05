@@ -37,7 +37,7 @@
                                 </constraints>
                                 <state key="normal" title="Aggiungi report"/>
                                 <connections>
-                                    <segue destination="Kcg-yx-DfW" kind="show" id="O5t-Ws-bfS"/>
+                                    <segue destination="Kcg-yx-DfW" kind="show" identifier="showReport" id="O5t-Ws-bfS"/>
                                 </connections>
                             </button>
                         </subviews>
