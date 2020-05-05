@@ -61,16 +61,16 @@
             </objects>
             <point key="canvasLocation" x="1515.625" y="-320.5078125"/>
         </scene>
-        <!--View Controller-->
+        <!--Form View Controller-->
         <scene sceneID="gI8-hU-3R3">
             <objects>
-                <viewController id="Kcg-yx-DfW" sceneMemberID="viewController">
+                <viewController id="Kcg-yx-DfW" customClass="FormViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S4Y-yV-rxg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="xht-hB-EJ2" userLabel="Container">
-                                <rect key="frame" x="280" y="140" width="209" height="551"/>
+                                <rect key="frame" x="279.5" y="140" width="209" height="551"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuovo Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-vZ-GbF">
                                         <rect key="frame" x="9" y="0.0" width="191.5" height="70"/>
@@ -94,6 +94,9 @@
                                                 <rect key="frame" x="0.0" y="46" width="209" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <connections>
+                                                    <action selector="tets:" destination="GCk-E8-Am0" eventType="editingDidEnd" id="fKt-LD-K4U"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACB-A0-0vO">
                                                 <rect key="frame" x="0.0" y="92" width="209" height="34"/>
@@ -137,6 +140,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="insertReport:" destination="Kcg-yx-DfW" eventType="touchUpInside" id="F3p-ao-tIC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -149,8 +155,15 @@
                         <viewLayoutGuide key="safeArea" id="y6U-Vt-dkh"/>
                     </view>
                     <navigationItem key="navigationItem" id="ScX-yA-AUd"/>
+                    <connections>
+                        <outlet property="glycemiaField" destination="IS8-TE-BXe" id="5qt-Nx-E87"/>
+                        <outlet property="maxPressureField" destination="vzG-Z4-0cZ" id="sgh-uX-cjN"/>
+                        <outlet property="minPressureField" destination="ZXy-TX-eg7" id="0K8-eQ-gen"/>
+                        <outlet property="temperatureField" destination="NV7-F5-wKa" id="EEg-OL-vGI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPJ-Db-gIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GCk-E8-Am0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2316.40625" y="-307.03125"/>
         </scene>
@@ -214,7 +227,7 @@
                     <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nEJ-JU-RtG">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

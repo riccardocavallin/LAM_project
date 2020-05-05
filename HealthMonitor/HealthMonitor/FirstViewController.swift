@@ -14,8 +14,8 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     
     override func viewDidLoad() {
-        super.viewDidLoad();
-        calendar.delegate = self;
+        super.viewDidLoad()
+        calendar.delegate = self
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -24,6 +24,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         let dataString = formatter.string(from:date)
         print("\(dataString)")
     }
+    
 
 }
 
