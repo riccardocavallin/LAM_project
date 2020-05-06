@@ -72,28 +72,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="xht-hB-EJ2" userLabel="Container">
-                                <rect key="frame" x="279.5" y="140" width="209" height="551"/>
+                                <rect key="frame" x="224.5" y="155" width="321" height="628"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuovo Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-vZ-GbF">
-                                        <rect key="frame" x="9" y="0.0" width="191.5" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="7fJ-d8-S9J"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-uA-eLh">
-                                        <rect key="frame" x="0.0" y="107" width="209" height="356"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="540"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura corporea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5F-9I-58j">
-                                                <rect key="frame" x="0.0" y="0.0" width="209" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In ºC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-F5-wKa">
-                                                <rect key="frame" x="0.0" y="46" width="209" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ºC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-F5-wKa">
+                                                <rect key="frame" x="0.0" y="46" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
@@ -101,45 +92,70 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACB-A0-0vO">
-                                                <rect key="frame" x="0.0" y="92" width="209" height="34"/>
+                                                <rect key="frame" x="0.0" y="92" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXy-TX-eg7">
-                                                <rect key="frame" x="0.0" y="138" width="209" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXy-TX-eg7">
+                                                <rect key="frame" x="0.0" y="138" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YH-2Z-vGP">
-                                                <rect key="frame" x="0.0" y="184" width="209" height="34"/>
+                                                <rect key="frame" x="0.0" y="184" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vzG-Z4-0cZ">
-                                                <rect key="frame" x="0.0" y="230" width="209" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vzG-Z4-0cZ">
+                                                <rect key="frame" x="0.0" y="230" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuw-CZ-WHV">
-                                                <rect key="frame" x="0.0" y="276" width="209" height="34"/>
+                                                <rect key="frame" x="0.0" y="276" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In  mg/dl" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IS8-TE-BXe">
-                                                <rect key="frame" x="0.0" y="322" width="209" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mg/dl" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IS8-TE-BXe">
+                                                <rect key="frame" x="0.0" y="322" width="321" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito cardiaco" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-zq-RF4">
+                                                <rect key="frame" x="0.0" y="368" width="321" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Battiti al minuto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQc-CB-kCO">
+                                                <rect key="frame" x="0.0" y="414" width="321" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="tets:" destination="GCk-E8-Am0" eventType="editingDidEnd" id="QOD-Pd-tKd"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bo-LI-XE0">
+                                                <rect key="frame" x="0.0" y="460" width="321" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Qualche informazione aggiuntiva da ricordare" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-J6-SfO">
+                                                <rect key="frame" x="0.0" y="506" width="321" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="tets:" destination="GCk-E8-Am0" eventType="editingDidEnd" id="XDP-F7-EG8"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-Lt-dOf">
-                                        <rect key="frame" x="87" y="500" width="35" height="51"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="51" id="2cu-wN-nS5"/>
-                                        </constraints>
+                                        <rect key="frame" x="143" y="577" width="35" height="51"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
@@ -148,19 +164,34 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuovo Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-vZ-GbF">
+                                <rect key="frame" x="289" y="70" width="192" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="JKX-6Z-DDq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xht-hB-EJ2" firstAttribute="centerX" secondItem="S4Y-yV-rxg" secondAttribute="centerX" id="B1R-Fj-eq4"/>
-                            <constraint firstItem="xht-hB-EJ2" firstAttribute="centerY" secondItem="S4Y-yV-rxg" secondAttribute="centerY" constant="-96.5" id="heD-8e-c9I"/>
+                            <constraint firstItem="xht-hB-EJ2" firstAttribute="leading" secondItem="y6U-Vt-dkh" secondAttribute="leading" constant="224.5" id="E5K-hi-bER"/>
+                            <constraint firstItem="xht-hB-EJ2" firstAttribute="top" secondItem="j5b-vZ-GbF" secondAttribute="bottom" constant="15" id="JOn-m1-WKc"/>
+                            <constraint firstItem="j5b-vZ-GbF" firstAttribute="leading" secondItem="y6U-Vt-dkh" secondAttribute="leading" constant="289" id="PnH-g0-Ju7"/>
+                            <constraint firstItem="j5b-vZ-GbF" firstAttribute="centerX" secondItem="xht-hB-EJ2" secondAttribute="centerX" id="bPr-cy-JFF"/>
+                            <constraint firstItem="j5b-vZ-GbF" firstAttribute="top" secondItem="y6U-Vt-dkh" secondAttribute="top" constant="20" id="skA-eS-1ar"/>
+                            <constraint firstItem="y6U-Vt-dkh" firstAttribute="bottom" secondItem="xht-hB-EJ2" secondAttribute="bottom" constant="191" id="xSA-6B-hoY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y6U-Vt-dkh"/>
                     </view>
                     <navigationItem key="navigationItem" id="ScX-yA-AUd"/>
                     <connections>
                         <outlet property="glycemiaField" destination="IS8-TE-BXe" id="5qt-Nx-E87"/>
+                        <outlet property="heartRateField" destination="dQc-CB-kCO" id="Vdd-52-Anc"/>
                         <outlet property="maxPressureField" destination="vzG-Z4-0cZ" id="sgh-uX-cjN"/>
                         <outlet property="minPressureField" destination="ZXy-TX-eg7" id="0K8-eQ-gen"/>
+                        <outlet property="notesField" destination="CUE-J6-SfO" id="BXA-OD-Kvj"/>
                         <outlet property="temperatureField" destination="NV7-F5-wKa" id="EEg-OL-vGI"/>
                     </connections>
                 </viewController>

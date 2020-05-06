@@ -14,7 +14,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var aggiungiReport: UIButton!
     
-    var dataString = ""
+    var data: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,11 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE dd-MM-YYYY"
-        dataString = formatter.string(from:date)
-        print("\(dataString)")
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "EEEE dd-MM-YYYY"
+//        dataString = formatter.string(from:date)
+//        print("\(dataString)")
+        self.data = date
         aggiungiReport.isHidden = false
         
     }
@@ -34,7 +35,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     // funzione che permette di passare la data alla view del form passando la data selezionata
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let formVC = segue.destination as! FormViewController
-        formVC.data = dataString
+        formVC.data = data
 
     }
     

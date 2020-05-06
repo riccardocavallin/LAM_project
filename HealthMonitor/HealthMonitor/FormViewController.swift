@@ -14,35 +14,61 @@ class FormViewController: UIViewController {
     @IBOutlet weak var minPressureField: UITextField!
     @IBOutlet weak var maxPressureField: UITextField!
     @IBOutlet weak var glycemiaField: UITextField!
+    @IBOutlet weak var heartRateField: UITextField!
+    @IBOutlet weak var notesField: UITextField!
     
     // variabile data passata dal FirstViewController
-    var data = ""
+    var data: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func insertReport(_ sender: Any) {
-        let itLocale = Locale(identifier: "it_IT")
-        let temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+        let context = AppDelegate.viewContext
+        let report = Report(context: context)
+        
+        report.data = data!
+        
+        if temperatureField.text != ""  {
+            let itLocale = Locale(identifier: "it_IT")
+            report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+            print("Temperatura: ", report.temperatura ?? "nessuna")
+        }
+        
         let pressioneMin = Int16(minPressureField.text!)
+        if minPressureField.text != ""  && pressioneMin != nil {
+          report.pressioneMin = pressioneMin!
+            print("Pressione min: ", report.pressioneMin )
+        }
+        
         let pressioneMax = Int16(maxPressureField.text!)
+        if maxPressureField.text != ""  && pressioneMax != nil {
+            report.pressioneMax = pressioneMax!
+            print("Pressione max: ", report.pressioneMax )
+        }
+        
         let glicemia = Int16(glycemiaField.text!)
-        print("Temperatura: ", temperatura)
-        print("Pressione min: ", pressioneMin ?? "nessuna")
-        print("Pressione max: ", pressioneMax ?? "nessuna")
-        print("Glicemia: ", glicemia ?? "nessuna")
-        print("Data: ", data)
+        if glycemiaField.text != ""  && glicemia != nil {
+            report.glicemia = glicemia!
+            print("Glicemia: ", report.glicemia )
+        }
+        
+        let battito = Int16(heartRateField.text!)
+        if heartRateField.text != ""  && battito != nil {
+            report.battito = battito!
+            print("Bttito: ", report.battito )
+        }
+        
+        report.note = notesField.text
+        print("Note: ", report.note ?? "nessuna")
+        
         temperatureField.text = nil
         maxPressureField.text = nil
         minPressureField.text = nil
         glycemiaField.text = nil
-        let context = AppDelegate.viewContext
-        let report = Report(context: context)
-        report.temperatura = temperatura
-        report.pressioneMin = pressioneMax!
-        report.pressioneMax = pressioneMax!
-        report.glicemia = glicemia!
+        heartRateField.text = nil
+        notesField.text = nil
         
 
     }
