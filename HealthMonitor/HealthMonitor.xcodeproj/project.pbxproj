@@ -14,6 +14,7 @@
 		8B0C14F5245EC75700281438 /* HealthMonitor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C14F3245EC75700281438 /* HealthMonitor.xcdatamodeld */; };
 		8B0C14F7245EC75900281438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C14F6245EC75900281438 /* Assets.xcassets */; };
 		8B0C14FA245EC75900281438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C14F8245EC75900281438 /* LaunchScreen.storyboard */; };
+		8B4BCAA8246302C80071B51B /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCAA7246302C80071B51B /* Report.swift */; };
 		8B62527E2461AD8D002C35EA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B62527D2461AD8D002C35EA /* FormViewController.swift */; };
 		ABB480E18CB9AAB0C77E6E7B /* Pods_HealthMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BABBAEEE1614836C56DE7E /* Pods_HealthMonitor.framework */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		8B0C14F6245EC75900281438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0C14F9245EC75900281438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0C14FB245EC75900281438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B4BCAA7246302C80071B51B /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		8B62527D2461AD8D002C35EA /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		9F64F28105C0C6C6C53EE036 /* Pods-HealthMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMonitor.release.xcconfig"; path = "Target Support Files/Pods-HealthMonitor/Pods-HealthMonitor.release.xcconfig"; sourceTree = "<group>"; };
 		CFC89DE7CD4950A0FF1FF4ED /* Pods-HealthMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMonitor.debug.xcconfig"; path = "Target Support Files/Pods-HealthMonitor/Pods-HealthMonitor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		8B0C14E7245EC75700281438 /* HealthMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				8B4BCAA7246302C80071B51B /* Report.swift */,
 				8B0C14E8245EC75700281438 /* AppDelegate.swift */,
 				8B0C14EA245EC75700281438 /* SceneDelegate.swift */,
 				8B0C14EC245EC75700281438 /* FirstViewController.swift */,
@@ -217,6 +220,7 @@
 				8B0C14F5245EC75700281438 /* HealthMonitor.xcdatamodeld in Sources */,
 				8B62527E2461AD8D002C35EA /* FormViewController.swift in Sources */,
 				8B0C14EB245EC75700281438 /* SceneDelegate.swift in Sources */,
+				8B4BCAA8246302C80071B51B /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

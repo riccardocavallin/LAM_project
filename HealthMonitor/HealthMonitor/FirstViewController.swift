@@ -22,14 +22,6 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         aggiungiReport.isHidden = true
     }
     
-//    func showAggiungiReportButton() {
-//        if (dataString == "") {
-//            aggiungiReport.isHidden = true
-//        } else {
-//            aggiungiReport.isHidden = false
-//        }
-//    }
-
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE dd-MM-YYYY"
