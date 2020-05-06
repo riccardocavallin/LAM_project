@@ -2,7 +2,7 @@
 
 ## Author
 
-* **Riccardo Cavallin** <riccardo.cavallin@studio.unibo.it>
+**Riccardo Cavallin** <riccardo.cavallin@studio.unibo.it>
 
 ## License
 
