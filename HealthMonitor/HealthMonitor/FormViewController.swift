@@ -15,6 +15,7 @@ class FormViewController: UIViewController {
     @IBOutlet weak var maxPressureField: UITextField!
     @IBOutlet weak var glycemiaField: UITextField!
     
+    // variabile data passata dal FirstViewController
     var data = ""
     
     override func viewDidLoad() {
@@ -26,10 +27,6 @@ class FormViewController: UIViewController {
         let pressioneMin = minPressureField.text
         let pressioneMax = maxPressureField.text
         let glicemia = glycemiaField.text
-//        let date = Date()
-//        let formatter = DateFormatter()
-//        let dataString = formatter.string(from:date)
-//        formatter.dateFormat = "EEEE dd-MM-YYYY"
         print("Temperatura: ", temperatura ?? "nessuna")
         print("Pressione min: ", pressioneMin ?? "nessuna")
         print("Pressione max: ", pressioneMax ?? "nessuna")
