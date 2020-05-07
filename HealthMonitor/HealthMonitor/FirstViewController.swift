@@ -49,11 +49,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         data = formatter.string(from:date)
         aggiungiReport.isHidden = false
 		dailyReports = findReportsByDay(matching: data!)
-		if dailyReports != nil {
-			for report in dailyReports! {
-				print("restituito dal database il report del giorno \(report.data!) con nota \(String(describing: report.note))")
-			}
-		}
+		self.tableView.reloadData()
 	}
 	
 	// ritorna tutti i report con la data selezionata
@@ -86,17 +82,18 @@ extension FirstViewController: UITableViewDelegate {
 }
 
 extension FirstViewController: UITableViewDataSource {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if dailyReports != nil {
-            return dailyReports!.count
-        } else {
-            return 0
-        }
+		return dailyReports?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
+		cell.textLabel?.text = dailyReports![indexPath.row].data
         return cell
     }
     
