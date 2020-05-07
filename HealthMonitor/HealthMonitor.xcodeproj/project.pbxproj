@@ -86,18 +86,42 @@
 		8B0C14E7245EC75700281438 /* HealthMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				8B4BCAA7246302C80071B51B /* Report.swift */,
 				8B0C14E8245EC75700281438 /* AppDelegate.swift */,
 				8B0C14EA245EC75700281438 /* SceneDelegate.swift */,
-				8B0C14EC245EC75700281438 /* FirstViewController.swift */,
-				8B0C14F0245EC75700281438 /* Main.storyboard */,
 				8B0C14F6245EC75900281438 /* Assets.xcassets */,
 				8B0C14F8245EC75900281438 /* LaunchScreen.storyboard */,
 				8B0C14FB245EC75900281438 /* Info.plist */,
-				8B0C14F3245EC75700281438 /* HealthMonitor.xcdatamodeld */,
-				8B62527D2461AD8D002C35EA /* FormViewController.swift */,
+				8B4BCAAC24632FB80071B51B /* Model */,
+				8B4BCAAA24632EA20071B51B /* View */,
+				8B4BCAAB24632EE50071B51B /* Controller */,
 			);
 			path = HealthMonitor;
+			sourceTree = "<group>";
+		};
+		8B4BCAAA24632EA20071B51B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B0C14F0245EC75700281438 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8B4BCAAB24632EE50071B51B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B0C14EC245EC75700281438 /* FirstViewController.swift */,
+				8B62527D2461AD8D002C35EA /* FormViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8B4BCAAC24632FB80071B51B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B0C14F3245EC75700281438 /* HealthMonitor.xcdatamodeld */,
+				8B4BCAA7246302C80071B51B /* Report.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
