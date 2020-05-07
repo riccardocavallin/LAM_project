@@ -93,7 +93,7 @@ extension FirstViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
-		cell.textLabel?.text = dailyReports![indexPath.row].data
+		cell.textLabel?.text = "Report numero \(indexPath.row + 1)"
         return cell
     }
     

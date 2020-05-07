@@ -11,6 +11,4 @@ import CoreData
 
 class Report: NSManagedObject {
   
-	
-	
 }
