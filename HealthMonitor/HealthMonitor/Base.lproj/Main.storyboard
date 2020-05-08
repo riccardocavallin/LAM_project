@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Health Monitor-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="battitoInsLabel" destination="T28-aH-NaM" id="eSP-l8-B9u"/>
-                                            <outlet property="glicInsLabel" destination="GMO-C8-Fxy" id="28G-ey-2cB"/>
+                                            <outlet property="glicInsLabel" destination="KsE-SH-hg8" id="EN4-Ba-5rN"/>
                                             <outlet property="indexLabel" destination="I4L-Z9-ODd" id="YYL-1U-ZQ7"/>
                                             <outlet property="noteInsLabel" destination="KlB-Zz-ymQ" id="Dqp-1G-0y5"/>
                                             <outlet property="pMaxInsLabel" destination="RPN-Ci-Ya6" id="hpo-hK-Jro"/>
@@ -222,7 +222,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8JZ-Rx-kUI"/>
+                    <navigationItem key="navigationItem" title="Health Monitor" id="8JZ-Rx-kUI"/>
                     <connections>
                         <outlet property="aggiungiReport" destination="QMy-Oi-ohJ" id="d8d-Ji-oAt"/>
                         <outlet property="calendar" destination="645-pg-QIw" id="AAV-ls-bTP"/>
