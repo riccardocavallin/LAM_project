@@ -16,8 +16,8 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var aggiungiReport: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var data: String? = nil
-	var dailyReports : [Report]? = nil
+    var data: String?
+	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
     
     override func viewDidLoad() {
@@ -34,12 +34,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 		let request: NSFetchRequest<Report> = Report.fetchRequest()
         request.predicate = NSPredicate(value: true)
         // se fallisce restituisce nil
-        let allReports = try? context.fetch(request)
-        if allReports != nil {
-            for report in allReports! {
-                print("restituito report \(report.data!)")
-            }
-        }
+		_ = try? context.fetch(request)
 	}
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
@@ -61,8 +56,19 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	    
     // funzione che permette di passare la data alla view del form passando la data selezionata
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let formVC = segue.destination as! FormViewController
-        formVC.data = data
+		if let identifier = segue.identifier {
+			switch identifier {
+			case "showReport":
+				let formVC = segue.destination as! FormViewController
+				formVC.data = data
+			case "editReport":
+				let editFormVC = segue.destination as! EditFormViewController
+				let row = tableView.indexPathForSelectedRow!.row
+				editFormVC.report = dailyReports![row]
+			default:
+				print("Identifier non valido")
+			}
+		}
 
     }
     
@@ -76,9 +82,9 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 // estensione con metodi di gestione della tabella
 extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tapped")
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//		//performSegue(withIdentifier: "editReport", sender: self)
+//    }
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -115,15 +121,13 @@ class ReportTableViewCell: UITableViewCell {
 	func setReport(index: Int, report: Report) {
 		indexLabel.text = "\(index)"
 		if tempInsLabel.text != nil {
-			tempInsLabel.text = "\(String(describing: report.temperatura))"
-		} else {
-			tempInsLabel.text = "N/A"
+			tempInsLabel.text = "\(report.temperatura!)"
 		}
 		pMinInsLabel.text = "\(report.pressioneMin)"
 		pMaxInsLabel.text = "\(report.pressioneMax)"
 		glicInsLabel.text = "\(report.glicemia)"
 		battitoInsLabel.text = "\(report.battito)"
-		noteInsLabel.text = "\(String(describing: report.note))"
+		noteInsLabel.text = "\(report.note!)"
 		
 		
 	}
