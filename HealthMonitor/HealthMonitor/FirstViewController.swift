@@ -73,15 +73,12 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     
 }
 
-extension FirstViewController: UITableViewDelegate {
+// estensione con metodi di gestione della tabella
+extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tapped")
     }
-    
-}
-
-extension FirstViewController: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -92,11 +89,46 @@ extension FirstViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
-		cell.textLabel?.text = "Report numero \(indexPath.row + 1)"
-        return cell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath) as! ReportTableViewCell
+		if let report  = dailyReports?[indexPath.row] {
+			cell.setReport(index: indexPath.row + 1,report: report)
+			return cell
+		} else {
+			return cell
+		}
     }
     
-    
 }
+
+// classe per le celle della tabella
+class ReportTableViewCell: UITableViewCell {
+
+	@IBOutlet weak var indexLabel: UILabel!
+	@IBOutlet weak var tempInsLabel: UILabel!
+	@IBOutlet weak var pMinInsLabel: UILabel!
+	@IBOutlet weak var pMaxInsLabel: UILabel!
+	@IBOutlet weak var glicInsLabel: UILabel!
+	@IBOutlet weak var battitoInsLabel: UILabel!
+	@IBOutlet weak var noteInsLabel: UILabel!
+	
+	
+	func setReport(index: Int, report: Report) {
+		indexLabel.text = "\(index)"
+		if tempInsLabel.text != nil {
+			tempInsLabel.text = "\(String(describing: report.temperatura))"
+		} else {
+			tempInsLabel.text = "N/A"
+		}
+		pMinInsLabel.text = "\(report.pressioneMin)"
+		pMaxInsLabel.text = "\(report.pressioneMax)"
+		glicInsLabel.text = "\(report.glicemia)"
+		battitoInsLabel.text = "\(report.battito)"
+		noteInsLabel.text = "\(String(describing: report.note))"
+		
+		
+	}
+	
+	
+}
+
 
