@@ -65,13 +65,7 @@ class FormViewController: UIViewController {
         report.note = notesField.text
         //print("Note: ", report.note ?? "nessuna")
         
-        // reset delle labels
-        temperatureField.text = nil
-        maxPressureField.text = nil
-        minPressureField.text = nil
-        glycemiaField.text = nil
-        heartRateField.text = nil
-        notesField.text = nil
+		resetLabels()
         
         // salvataggio nel database
         do {
@@ -81,6 +75,16 @@ class FormViewController: UIViewController {
         }
         
     }
+	
+	private func resetLabels() {
+		// reset delle labels
+        temperatureField.text = nil
+        maxPressureField.text = nil
+        minPressureField.text = nil
+        glycemiaField.text = nil
+        heartRateField.text = nil
+        notesField.text = nil
+	}
 
 
 }

@@ -26,6 +26,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         aggiungiReport.isHidden = true
+		tableView.rowHeight = 100
         findAllreports()
     }
     

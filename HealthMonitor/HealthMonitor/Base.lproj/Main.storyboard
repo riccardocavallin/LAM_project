@@ -37,24 +37,21 @@
                                     <constraint firstAttribute="height" constant="464" id="QsF-5o-6aV"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" id="o1K-Nj-wjn" customClass="ReportTableViewCell" customModule="HealthMonitor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="o1K-Nj-wjn" customClass="ReportTableViewCell" customModule="HealthMonitor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o1K-Nj-wjn" id="U48-I2-C6F">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-Z9-ODd" userLabel="index">
-                                                    <rect key="frame" x="15" y="58" width="35" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="Whk-xL-D92"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="15" y="38" width="4.5" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lx8-Gb-ccS" userLabel="TemperaturaStack">
-                                                    <rect key="frame" x="75" y="41" width="166" height="20.5"/>
+                                                    <rect key="frame" x="75" y="21" width="166" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-ra-PB1">
                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="20.5"/>
@@ -74,7 +71,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lnu-0p-5um" userLabel="GlicemiaStack">
-                                                    <rect key="frame" x="75" y="88.5" width="109" height="20.5"/>
+                                                    <rect key="frame" x="75" y="58.5" width="109" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMO-C8-Fxy">
                                                             <rect key="frame" x="0.0" y="0.0" width="70.5" height="20.5"/>
@@ -91,7 +88,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tyo-mW-FvG" userLabel="PresMinStack">
-                                                    <rect key="frame" x="261" y="41" width="203" height="20.5"/>
+                                                    <rect key="frame" x="261" y="21" width="203" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUw-aY-SxE">
                                                             <rect key="frame" x="0.0" y="0.0" width="139" height="20.5"/>
@@ -111,7 +108,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-kg-5Lg" userLabel="PersMaxStack">
-                                                    <rect key="frame" x="261" y="88.5" width="215.5" height="20.5"/>
+                                                    <rect key="frame" x="261" y="58.5" width="215.5" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPg-xs-1ZP">
                                                             <rect key="frame" x="0.0" y="0.0" width="151.5" height="20.5"/>
@@ -131,7 +128,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jBy-h3-2iB" userLabel="BattitoStack">
-                                                    <rect key="frame" x="494" y="41" width="124" height="20.5"/>
+                                                    <rect key="frame" x="494" y="21" width="124" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mha-x2-XAp">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
@@ -154,7 +151,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Js-bS-JuM" userLabel="NoteStack">
-                                                    <rect key="frame" x="494" y="88.5" width="250" height="20.5"/>
+                                                    <rect key="frame" x="494" y="58.5" width="250" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xas-ZR-4t8">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
@@ -181,20 +178,20 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Lx8-Gb-ccS" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="30" id="5cX-v4-KKL"/>
+                                                <constraint firstItem="Lx8-Gb-ccS" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="10" id="5cX-v4-KKL"/>
                                                 <constraint firstItem="1Js-bS-JuM" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="479" id="8vG-mL-abP"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="rNz-kg-5Lg" secondAttribute="bottom" constant="30" id="DGA-rd-fPR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rNz-kg-5Lg" secondAttribute="bottom" constant="10" id="DGA-rd-fPR"/>
                                                 <constraint firstItem="Lnu-0p-5um" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="60" id="Psn-A4-co6"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="1Js-bS-JuM" secondAttribute="bottom" constant="30" id="QQ8-7U-fCZ"/>
-                                                <constraint firstItem="tyo-mW-FvG" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="30" id="SBI-em-3rM"/>
-                                                <constraint firstItem="I4L-Z9-ODd" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="47" id="Swg-sP-kNB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1Js-bS-JuM" secondAttribute="bottom" constant="10" id="QQ8-7U-fCZ"/>
+                                                <constraint firstItem="tyo-mW-FvG" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="10" id="SBI-em-3rM"/>
                                                 <constraint firstItem="jBy-h3-2iB" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="479" id="TTh-Xc-nnZ"/>
                                                 <constraint firstItem="tyo-mW-FvG" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="246" id="WHx-3V-BCU"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Lnu-0p-5um" secondAttribute="bottom" constant="30" id="eT3-Ri-YrC"/>
-                                                <constraint firstItem="jBy-h3-2iB" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="30" id="ejb-cF-sAW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lnu-0p-5um" secondAttribute="bottom" constant="10" id="eT3-Ri-YrC"/>
+                                                <constraint firstItem="jBy-h3-2iB" firstAttribute="top" secondItem="U48-I2-C6F" secondAttribute="topMargin" constant="10" id="ejb-cF-sAW"/>
                                                 <constraint firstItem="Lx8-Gb-ccS" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="60" id="elz-4d-WsE"/>
-                                                <constraint firstItem="I4L-Z9-ODd" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" id="icA-0S-zof"/>
+                                                <constraint firstItem="I4L-Z9-ODd" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" id="sIt-oW-PAU"/>
                                                 <constraint firstItem="rNz-kg-5Lg" firstAttribute="leading" secondItem="U48-I2-C6F" secondAttribute="leadingMargin" constant="246" id="uwH-HT-WY1"/>
+                                                <constraint firstItem="I4L-Z9-ODd" firstAttribute="centerY" secondItem="U48-I2-C6F" secondAttribute="centerY" id="zhw-FJ-bDL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -552,6 +549,9 @@
                                         <rect key="frame" x="154.5" y="577" width="35" height="51"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="updateReport:" destination="zLa-0l-0OB" eventType="touchUpInside" id="CY9-Nm-SBQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
