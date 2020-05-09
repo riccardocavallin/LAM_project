@@ -86,10 +86,6 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //		//performSegue(withIdentifier: "editReport", sender: self)
 //    }
-	
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return dailyReports?.count ?? 0
@@ -104,6 +100,24 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 			return cell
 		}
     }
+	
+	func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+		let action = UIContextualAction(style: .destructive, title: "Elimina") { (action, view, completion) in
+			// eliminazione dal database
+			self.context.delete(self.dailyReports![indexPath.row])
+			self.dailyReports?.remove(at: indexPath.row)
+			print("Qui ci va il codice per rimuovere dal database");
+			self.tableView.deleteRows(at: [indexPath], with: .automatic)
+			completion(true)
+		}
+		action.backgroundColor = .red
+		return action
+	}
+	
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let delete = deleteAction(at: indexPath)
+		return UISwipeActionsConfiguration(actions: [delete])
+	}
     
 }
 
