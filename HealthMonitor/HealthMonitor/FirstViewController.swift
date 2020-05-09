@@ -15,7 +15,8 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var aggiungiReport: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+	@IBOutlet weak var summaryButton: UIButton!
+	
     var data: String?
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
@@ -26,6 +27,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         aggiungiReport.isHidden = true
+		summaryButton.isHidden = true
 		tableView.rowHeight = 100
         findAllreports()
     }
@@ -45,6 +47,11 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         data = formatter.string(from:date)
         aggiungiReport.isHidden = false
 		dailyReports = findReportsByDay(matching: data!)
+		if dailyReports?.count ?? 1 > 1 {
+			summaryButton.isHidden = false
+		} else {
+			summaryButton.isHidden = true
+		}
 		self.tableView.reloadData()
 	}
 	
@@ -66,6 +73,9 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 				let editFormVC = segue.destination as! EditFormViewController
 				let row = tableView.indexPathForSelectedRow!.row
 				editFormVC.report = dailyReports![row]
+			case "showSummary":
+				let summaryVC = segue.destination as! SummaryPopUpViewController
+				summaryVC.reports = dailyReports!
 			default:
 				print("Identifier non valido")
 			}
@@ -105,8 +115,9 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 		let action = UIContextualAction(style: .destructive, title: "Elimina") { (action, view, completion) in
 			// eliminazione dal database
 			self.context.delete(self.dailyReports![indexPath.row])
+			// eliminazione dal vettore
 			self.dailyReports?.remove(at: indexPath.row)
-			print("Qui ci va il codice per rimuovere dal database");
+			// eliminazione dalla tabella
 			self.tableView.deleteRows(at: [indexPath], with: .automatic)
 			completion(true)
 		}

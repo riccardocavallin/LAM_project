@@ -17,13 +17,44 @@ class FormViewController: UIViewController {
     @IBOutlet weak var glycemiaField: UITextField!
     @IBOutlet weak var heartRateField: UITextField!
     @IBOutlet weak var notesField: UITextField!
-    
+	@IBOutlet weak var okButton: UIButton!
+	
     // variabile data passata dal FirstViewController
     var data: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
+		setupAddTargetIsNotEmptyTextFields()
+	}
+	
+	func setupAddTargetIsNotEmptyTextFields() {
+		okButton.isEnabled = false
+		temperatureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		minPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		maxPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		glycemiaField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		heartRateField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		notesField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+	}
+	
+	@objc func textFieldsIsNotEmpty(sender: UITextField) {
+
+	 sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+
+	 guard
+	    let temperatura = temperatureField.text, !temperatura.isEmpty,
+	    let pressioneMin = minPressureField.text, !pressioneMin.isEmpty,
+	    let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty,
+		let glicemia = glycemiaField.text, !glicemia.isEmpty,
+		let battito = heartRateField.text, !battito.isEmpty,
+		let note = notesField.text, !note.isEmpty
+	else {
+	    self.okButton.isEnabled = false
+	    return
+		}
+	 // enable okButton if all conditions are met
+	 okButton.isEnabled = true
+	}
     
     // cliccando su ok viene creato l'oggetto report
     @IBAction func insertReport(_ sender: Any) {
@@ -32,38 +63,23 @@ class FormViewController: UIViewController {
         
         report.data = data!
         
-        if temperatureField.text != ""  {
-            let itLocale = Locale(identifier: "it_IT")
-            report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
-            //print("Temperatura: ", report.temperatura ?? "nessuna")
-        }
-        
+		let itLocale = Locale(identifier: "it_IT")
+		report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+                 
         let pressioneMin = Int16(minPressureField.text!)
-        if minPressureField.text != ""  && pressioneMin != nil {
-          report.pressioneMin = pressioneMin!
-            //print("Pressione min: ", report.pressioneMin )
-        }
+		report.pressioneMin = pressioneMin!
+         
         
         let pressioneMax = Int16(maxPressureField.text!)
-        if maxPressureField.text != ""  && pressioneMax != nil {
-            report.pressioneMax = pressioneMax!
-            //print("Pressione max: ", report.pressioneMax )
-        }
+		report.pressioneMax = pressioneMax!
         
         let glicemia = Int16(glycemiaField.text!)
-        if glycemiaField.text != ""  && glicemia != nil {
-            report.glicemia = glicemia!
-            //print("Glicemia: ", report.glicemia )
-        }
+		report.glicemia = glicemia!
         
         let battito = Int16(heartRateField.text!)
-        if heartRateField.text != ""  && battito != nil {
-            report.battito = battito!
-            //print("Battito: ", report.battito )
-        }
+		report.battito = battito!
         
         report.note = notesField.text
-        //print("Note: ", report.note ?? "nessuna")
         
 		resetLabels()
         
