@@ -398,8 +398,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-fP-B0c">
-                                <rect key="frame" x="5" y="30" width="758" height="400"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-fP-B0c" userLabel="Temp Stack">
+                                <rect key="frame" x="5" y="30" width="758" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7p-jL-zCl">
                                         <rect key="frame" x="0.0" y="0.0" width="758" height="26.5"/>
@@ -408,13 +408,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uip-0W-yKM" userLabel="temperatureChart" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="41.5" width="758" height="358.5"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="758" height="408.5"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="G7p-jL-zCl" firstAttribute="centerX" secondItem="XV8-fP-B0c" secondAttribute="centerX" id="DEz-rD-czf"/>
-                                    <constraint firstAttribute="height" constant="400" id="HZe-by-BRy"/>
+                                    <constraint firstAttribute="height" constant="450" id="HZe-by-BRy"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ajx-Q5-lrQ" userLabel="Glycem Stack">
+                                <rect key="frame" x="5" y="500" width="758" height="450"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gq-XI-kuX" userLabel="Glicemia">
+                                        <rect key="frame" x="0.0" y="0.0" width="758" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V03-en-OPV" userLabel="glycemiaChart" customClass="BarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="41.5" width="758" height="408.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="BEn-uz-t6y"/>
+                                    <constraint firstItem="3gq-XI-kuX" firstAttribute="centerX" secondItem="ajx-Q5-lrQ" secondAttribute="centerX" id="qrr-EU-yDL"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -422,12 +441,16 @@
                         <constraints>
                             <constraint firstItem="XV8-fP-B0c" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="5" id="17C-CC-PaZ"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="XV8-fP-B0c" secondAttribute="trailing" constant="5" id="Bqa-9b-hso"/>
+                            <constraint firstItem="ajx-Q5-lrQ" firstAttribute="trailing" secondItem="XV8-fP-B0c" secondAttribute="trailing" id="G7D-1Z-3sn"/>
+                            <constraint firstItem="ajx-Q5-lrQ" firstAttribute="leading" secondItem="XV8-fP-B0c" secondAttribute="leading" id="dvy-8a-Ms5"/>
                             <constraint firstItem="XV8-fP-B0c" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="30" id="klt-n6-aX7"/>
+                            <constraint firstItem="ajx-Q5-lrQ" firstAttribute="top" secondItem="XV8-fP-B0c" secondAttribute="bottom" constant="20" id="tGa-OO-cqs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Grafici" image="chart.pie.fill" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="glycemiaChart" destination="V03-en-OPV" id="NxY-a3-kJp"/>
                         <outlet property="temperatureChart" destination="Uip-0W-yKM" id="7AZ-ym-tZj"/>
                     </connections>
                 </viewController>

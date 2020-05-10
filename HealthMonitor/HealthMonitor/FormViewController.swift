@@ -98,6 +98,7 @@ class FormViewController: UIViewController {
         glycemiaField.text = nil
         heartRateField.text = nil
         notesField.text = nil
+		okButton.isEnabled = false
 	}
 
 
