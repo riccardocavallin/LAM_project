@@ -36,7 +36,6 @@ class EditFormViewController: UIViewController {
         maxPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
         glycemiaField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
         heartRateField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-        notesField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
     }
     
     @objc func textFieldsIsNotEmpty(sender: UITextField) {
@@ -48,8 +47,7 @@ class EditFormViewController: UIViewController {
         let pressioneMin = minPressureField.text, !pressioneMin.isEmpty,
         let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty,
         let glicemia = glycemiaField.text, !glicemia.isEmpty,
-        let battito = heartRateField.text, !battito.isEmpty,
-        let note = notesField.text, !note.isEmpty
+        let battito = heartRateField.text, !battito.isEmpty
     else {
         self.okButton.isEnabled = false
         return

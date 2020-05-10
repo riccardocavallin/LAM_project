@@ -29,16 +29,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         aggiungiReport.isHidden = true
 		summaryButton.isHidden = true
 		tableView.rowHeight = 100
-        findAllreports()
     }
-    
-	// trovo tutti i report e li stampo
-	func findAllreports() {
-		let request: NSFetchRequest<Report> = Report.fetchRequest()
-        request.predicate = NSPredicate(value: true)
-        // se fallisce restituisce nil
-		_ = try? context.fetch(request)
-	}
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

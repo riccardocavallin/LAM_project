@@ -1,16 +1,22 @@
 PODS:
+  - Charts (3.5.0):
+    - Charts/Core (= 3.5.0)
+  - Charts/Core (3.5.0)
   - FSCalendar (2.8.1)
 
 DEPENDENCIES:
+  - Charts
   - FSCalendar
 
 SPEC REPOS:
   trunk:
+    - Charts
     - FSCalendar
 
 SPEC CHECKSUMS:
+  Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
 
-PODFILE CHECKSUM: b648d57a183f9bee50e3b1f6e72899d564f38789
+PODFILE CHECKSUM: 75636f48f7a2e11ce4471b07eaef41987ab791d4
 
 COCOAPODS: 1.9.1
