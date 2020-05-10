@@ -20,7 +20,7 @@ class FormViewController: UIViewController {
 	@IBOutlet weak var okButton: UIButton!
 	
     // variabile data passata dal FirstViewController
-    var data: String? = nil
+    var data: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

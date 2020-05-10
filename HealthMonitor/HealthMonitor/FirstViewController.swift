@@ -17,7 +17,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var summaryButton: UIButton!
 	
-    var data: String?
+    var data: Date?
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
     
@@ -33,10 +33,11 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-YYYY"
-        data = formatter.string(from:date)
-        aggiungiReport.isHidden = false
+        //let formatter = DateFormatter()
+        //formatter.dateFormat = "dd-MM-YYYY"
+        //data = formatter.string(from:date)
+		data = date
+		aggiungiReport.isHidden = false
 		dailyReports = findReportsByDay(matching: data!)
 		if dailyReports?.count ?? 1 > 1 {
 			summaryButton.isHidden = false
@@ -47,9 +48,11 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	}
 	
 	// ritorna tutti i report con la data selezionata
-	func findReportsByDay(matching data:String) -> [Report]? {
+	func findReportsByDay(matching data:Date) -> [Report]? {
 		let request: NSFetchRequest<Report> = Report.fetchRequest()
-		request.predicate = NSPredicate(format: "data = %@", data)
+		request.predicate = NSPredicate(format: "data = %@", data as NSDate)
+		// filtrati in ordine di inserimento
+		request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
 		return try? context.fetch(request)
 	}
 	    

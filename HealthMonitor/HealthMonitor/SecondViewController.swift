@@ -101,6 +101,8 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     func findAllreports() -> [Report]? {
         let request: NSFetchRequest<Report> = Report.fetchRequest()
         request.predicate = NSPredicate(value: true)
+        // ordinamento per data
+        request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
         // se fallisce restituisce nil
         return try? context.fetch(request)
     }

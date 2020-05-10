@@ -31,7 +31,10 @@ class SummaryPopUpViewController: UIViewController {
     }
     
     func setLabels() {
-        reportLabel.text = "Giorno " + reports![0].data!
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        let data = formatter.string(from: reports![0].data!)
+        reportLabel.text = "Giorno " + data
         for report in reports! {
             temperatura = (report.temperatura! as Decimal) + temperatura
         }

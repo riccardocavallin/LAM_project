@@ -58,7 +58,6 @@ class EditFormViewController: UIViewController {
     
     private func setPlaceholders() {
         if let _ = report?.temperatura  {
-            print("\(report!.temperatura!)")
             temperatureField.text = "\(report!.temperatura!)"
         }
         if let _ = report?.pressioneMin  {
