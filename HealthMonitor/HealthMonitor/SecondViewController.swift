@@ -99,8 +99,11 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     
     // estraggo tutti i dati dal database
     func findAllreports() -> [Report]? {
+        let today = NSDate()
+        let aWeekAgo = today.addingTimeInterval(-7*24*60*60)
         let request: NSFetchRequest<Report> = Report.fetchRequest()
-        request.predicate = NSPredicate(value: true)
+        // estraggo solo i report dell'ultima settimana
+        request.predicate = NSPredicate(format: "data > %@ AND data < %@", aWeekAgo, today)
         // ordinamento per data
         request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
         // se fallisce restituisce nil
