@@ -16,7 +16,9 @@
 		8B0C14FA245EC75900281438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C14F8245EC75900281438 /* LaunchScreen.storyboard */; };
 		8B4BCAA8246302C80071B51B /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCAA7246302C80071B51B /* Report.swift */; };
 		8B62527E2461AD8D002C35EA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B62527D2461AD8D002C35EA /* FormViewController.swift */; };
+		8B6D1DC924683A49009B4F58 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D1DC824683A49009B4F58 /* SecondViewController.swift */; };
 		8B773F472465989200789760 /* EditFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B773F462465989200789760 /* EditFormViewController.swift */; };
+		8BDAC57F2466F3CD00EC5ACE /* SummaryPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDAC57E2466F3CD00EC5ACE /* SummaryPopUpViewController.swift */; };
 		ABB480E18CB9AAB0C77E6E7B /* Pods_HealthMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BABBAEEE1614836C56DE7E /* Pods_HealthMonitor.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +35,9 @@
 		8B0C14FB245EC75900281438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B4BCAA7246302C80071B51B /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; usesTabs = 1; };
 		8B62527D2461AD8D002C35EA /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		8B6D1DC824683A49009B4F58 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8B773F462465989200789760 /* EditFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormViewController.swift; sourceTree = "<group>"; };
+		8BDAC57E2466F3CD00EC5ACE /* SummaryPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopUpViewController.swift; sourceTree = "<group>"; };
 		9F64F28105C0C6C6C53EE036 /* Pods-HealthMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMonitor.release.xcconfig"; path = "Target Support Files/Pods-HealthMonitor/Pods-HealthMonitor.release.xcconfig"; sourceTree = "<group>"; };
 		CFC89DE7CD4950A0FF1FF4ED /* Pods-HealthMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMonitor.debug.xcconfig"; path = "Target Support Files/Pods-HealthMonitor/Pods-HealthMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +114,8 @@
 				8B0C14EC245EC75700281438 /* FirstViewController.swift */,
 				8B62527D2461AD8D002C35EA /* FormViewController.swift */,
 				8B773F462465989200789760 /* EditFormViewController.swift */,
+				8BDAC57E2466F3CD00EC5ACE /* SummaryPopUpViewController.swift */,
+				8B6D1DC824683A49009B4F58 /* SecondViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -250,8 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDAC57F2466F3CD00EC5ACE /* SummaryPopUpViewController.swift in Sources */,
 				8B0C14ED245EC75700281438 /* FirstViewController.swift in Sources */,
 				8B0C14E9245EC75700281438 /* AppDelegate.swift in Sources */,
+				8B6D1DC924683A49009B4F58 /* SecondViewController.swift in Sources */,
 				8B0C14F5245EC75700281438 /* HealthMonitor.xcdatamodeld in Sources */,
 				8B62527E2461AD8D002C35EA /* FormViewController.swift in Sources */,
 				8B773F472465989200789760 /* EditFormViewController.swift in Sources */,

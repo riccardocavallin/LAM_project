@@ -18,6 +18,7 @@ class EditFormViewController: UIViewController {
     @IBOutlet weak var glycemiaField: UITextField!
     @IBOutlet weak var heartRateField: UITextField!
     @IBOutlet weak var notesField: UITextField!
+    @IBOutlet weak var okButton: UIButton!
     
     
     // oggetto report da modificare passato dal FirstViewController
@@ -28,9 +29,35 @@ class EditFormViewController: UIViewController {
         setPlaceholders()
     }
     
+    func setupAddTargetIsNotEmptyTextFields() {
+        okButton.isEnabled = false
+        temperatureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        minPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        maxPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        glycemiaField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        heartRateField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+    }
+    
+    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+
+     sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+
+     guard
+        let temperatura = temperatureField.text, !temperatura.isEmpty,
+        let pressioneMin = minPressureField.text, !pressioneMin.isEmpty,
+        let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty,
+        let glicemia = glycemiaField.text, !glicemia.isEmpty,
+        let battito = heartRateField.text, !battito.isEmpty
+    else {
+        self.okButton.isEnabled = false
+        return
+        }
+     // enable okButton if all conditions are met
+     okButton.isEnabled = true
+    }
+    
     private func setPlaceholders() {
         if let _ = report?.temperatura  {
-            print("\(report!.temperatura!)")
             temperatureField.text = "\(report!.temperatura!)"
         }
         if let _ = report?.pressioneMin  {
