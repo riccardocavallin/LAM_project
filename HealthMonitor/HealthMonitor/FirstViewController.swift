@@ -20,6 +20,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     var data: Date?
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
+	var schedule : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         aggiungiReport.isHidden = true
 		summaryButton.isHidden = true
 		tableView.rowHeight = 100
+		setNotification()
     }
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
@@ -37,7 +39,12 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         //formatter.dateFormat = "dd-MM-YYYY"
         //data = formatter.string(from:date)
 		data = date
-		aggiungiReport.isHidden = false
+		// il bottone per agguingere report non viene mostrato per le date future
+		if (data! < Date()) {
+			aggiungiReport.isHidden = false
+		} else {
+			aggiungiReport.isHidden = true
+		}
 		dailyReports = findReportsByDay(matching: data!)
 		if dailyReports?.count ?? 1 > 1 {
 			summaryButton.isHidden = false
@@ -81,6 +88,35 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBAction func aggiungiReportClicked(_ sender: Any) {
          performSegue(withIdentifier: "showReport", sender: self)
     }
+	
+	private func setNotification() {
+		// richiesta permesso di notifica
+		let notificationCenter = UNUserNotificationCenter.current()
+		notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
+		
+		let content = UNMutableNotificationContent()
+		content.title = "Report giornaliero"
+		content.body = "Inserisci il tuo report odierno"
+		
+		// invia notifica di test dopo 5 secondi
+		let date = Date().addingTimeInterval(5)
+		let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+//        var dateComponents = DateComponents()
+//        dateComponents.calendar = Calendar.current
+//        dateComponents.hour = 19
+//        dateComponents.minute = 30
+		
+		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+		
+		let uuidString = UUID().uuidString
+		let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+		notificationCenter.add(request) { (error) in
+			if error != nil {
+				print("Errore con la notifica")
+			}
+		}
+		
+	}
     
 }
 
@@ -154,5 +190,6 @@ class ReportTableViewCell: UITableViewCell {
 	
 	
 }
+
 
 
