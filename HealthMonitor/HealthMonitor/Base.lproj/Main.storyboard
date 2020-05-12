@@ -250,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1515.625" y="-320.5078125"/>
+            <point key="canvasLocation" x="1520" y="-581"/>
         </scene>
         <!--Form View Controller-->
         <scene sceneID="gI8-hU-3R3">
@@ -388,7 +388,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPJ-Db-gIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GCk-E8-Am0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="-903"/>
+            <point key="canvasLocation" x="2227" y="-1147"/>
         </scene>
         <!--Grafici-->
         <scene sceneID="wg7-f3-ORb">
@@ -456,7 +456,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="359.765625"/>
+            <point key="canvasLocation" x="738" y="128"/>
+        </scene>
+        <!--Impostazioni-->
+        <scene sceneID="VgX-na-vy5">
+            <objects>
+                <viewController id="BKD-ct-BaA" userLabel="Impostazioni" customClass="ThirdViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z86-a5-T85" userLabel="Third View" customClass="ThirdVi">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orario notifica per inseire report:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-gs-PHW">
+                                <rect key="frame" x="231.5" y="74" width="305" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eik-H6-JyG">
+                                <rect key="frame" x="224" y="115.5" width="320" height="216"/>
+                                <locale key="locale" localeIdentifier="it_IT"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="BKD-ct-BaA" eventType="valueChanged" id="lDa-IU-JO9"/>
+                                </connections>
+                            </datePicker>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-OV-tmv">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8va-RF-aTQ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Impostazioni" id="oD0-Rd-ZLm"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attualmente impostato di default alle 19:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9E-2e-81V">
+                                <rect key="frame" x="220.5" y="336.5" width="327.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="qtt-HZ-EGE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Eik-H6-JyG" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="P6l-uw-2Rp"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="top" secondItem="V4n-wd-RhF" secondAttribute="top" id="QBY-S5-3hp"/>
+                            <constraint firstItem="A9E-2e-81V" firstAttribute="top" secondItem="Eik-H6-JyG" secondAttribute="bottom" constant="5" id="QX6-OR-bgU"/>
+                            <constraint firstItem="Eik-H6-JyG" firstAttribute="top" secondItem="jbz-gs-PHW" secondAttribute="bottom" constant="15" id="Z7Z-cf-hhA"/>
+                            <constraint firstItem="A9E-2e-81V" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="gOK-uQ-rmg"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="leading" secondItem="V4n-wd-RhF" secondAttribute="leading" id="iJl-H3-ZVM"/>
+                            <constraint firstItem="jbz-gs-PHW" firstAttribute="top" secondItem="bsK-OV-tmv" secondAttribute="bottom" constant="30" id="o3s-XR-VUV"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="centerX" secondItem="jbz-gs-PHW" secondAttribute="centerX" id="rb0-ah-Uu6"/>
+                            <constraint firstItem="jbz-gs-PHW" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="rdl-hn-WHG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V4n-wd-RhF"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Impostazioni" image="keyboard" catalog="system" id="1mF-uo-SnO"/>
+                    <connections>
+                        <outlet property="hourPicker" destination="Eik-H6-JyG" id="HdV-m2-rKZ"/>
+                        <outlet property="oraImpostata" destination="A9E-2e-81V" id="nWB-tZ-bYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSC-PW-a40" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737.5" y="825"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -470,6 +534,7 @@
                     <connections>
                         <segue destination="rzu-Jw-9M4" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="BKD-ct-BaA" kind="relationship" relationship="viewControllers" id="fjS-xp-Wuf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -493,7 +558,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvG-Ec-s5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320.5078125"/>
+            <point key="canvasLocation" x="738" y="-574"/>
         </scene>
         <!--Edit Form View Controller-->
         <scene sceneID="u35-ty-UPi">
@@ -634,7 +699,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A45-zJ-b2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Q01-3G-iUl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="-269"/>
+            <point key="canvasLocation" x="2227" y="-465"/>
         </scene>
         <!--Summary View Controller-->
         <scene sceneID="uDU-S7-vcB">
@@ -802,11 +867,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiZ-U0-T10" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2226.5625" y="403.7109375"/>
+            <point key="canvasLocation" x="2227" y="255"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="124"/>
+        <image name="keyboard" catalog="system" width="128" height="70"/>
     </resources>
 </document>
