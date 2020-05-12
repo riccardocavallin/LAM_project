@@ -10,13 +10,46 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+	
+	var window: UIWindow?
+	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+		UNUserNotificationCenter.current().delegate = self
+		// richiesta permesso di notifica
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         return true
+    }
+	
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        UNUserNotificationCenter.current().delegate = self
+        print("Sto per mandare la notifica")
+        completionHandler([.badge, .sound, .alert])
+    }
+	
+	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let identifier = response.actionIdentifier
+        
+        switch identifier {
+            
+        case UNNotificationDismissActionIdentifier:
+            print("The notification was dismissed")
+            completionHandler()
+        case UNNotificationDefaultActionIdentifier:
+            print("The user opened the app from the notification")
+			let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"Form") as! FormViewController
+//			self.navigationController?.pushViewController(vc, animated: true)
+			self.window = UIWindow(frame: UIScreen.main.bounds)
+			self.window?.rootViewController = vc
+			self.window?.makeKeyAndVisible()
+            completionHandler()
+        default:
+            print("Default case")
+            completionHandler()
+            
+        }
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -89,4 +122,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 
