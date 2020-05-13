@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let identifier = response.actionIdentifier
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch identifier {
             
@@ -38,11 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler()
         case UNNotificationDefaultActionIdentifier:
             print("The user opened the app from the notification")
-			let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"Form") as! FormViewController
-//			self.navigationController?.pushViewController(vc, animated: true)
-			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = vc
-			self.window?.makeKeyAndVisible()
+			if let vc = storyboard.instantiateViewController(withIdentifier:"FormViewController") as? FormViewController,
+				let tabBarController = self.window?.rootViewController as? UITabBarController,
+				let navController = tabBarController.selectedViewController as? UINavigationController {
+				navController.pushViewController(vc, animated: true)
+			}
+
             completionHandler()
         default:
             print("Default case")
