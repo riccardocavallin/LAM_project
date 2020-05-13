@@ -12,7 +12,7 @@ import UserNotifications
 
 class NotificationPublisher {
     
-    func sendNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, hour: Int, minute: Int, id: String) {
+   func sendNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -20,13 +20,14 @@ class NotificationPublisher {
         // aggiungo 1 al badge di notifica
         content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + badge)
         content.sound = sound
+        content.categoryIdentifier = "category"
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.hour = hour
         dateComponents.minute = minute
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
         let id = id
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
@@ -35,6 +36,13 @@ class NotificationPublisher {
                 print(error!.localizedDescription)
             }
         }
+       
+        
+        
+        // action
+        let action = UNNotificationAction(identifier: idAction, title: idTitle, options: .foreground)
+        let category = UNNotificationCategory(identifier: "category", actions: [action], intentIdentifiers: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         
     }
     
