@@ -30,7 +30,7 @@ class FormViewController: UIViewController {
 		setupAddTargetIsNotEmptyTextFields()
 	}
 	
-	func setupAddTargetIsNotEmptyTextFields() {
+	private func setupAddTargetIsNotEmptyTextFields() {
 		okButton.isEnabled = false
 		temperatureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
 		minPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
