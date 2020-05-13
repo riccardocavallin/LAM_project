@@ -15,6 +15,7 @@
 		8B0C14F7245EC75900281438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C14F6245EC75900281438 /* Assets.xcassets */; };
 		8B0C14FA245EC75900281438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C14F8245EC75900281438 /* LaunchScreen.storyboard */; };
 		8B0F0953246AB18A00A3E078 /* NotificationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0F0952246AB18A00A3E078 /* NotificationPublisher.swift */; };
+		8B3DE612246C51A80093BD88 /* Retrieve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DE611246C51A80093BD88 /* Retrieve.swift */; };
 		8B4BCAA8246302C80071B51B /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCAA7246302C80071B51B /* Report.swift */; };
 		8B62527E2461AD8D002C35EA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B62527D2461AD8D002C35EA /* FormViewController.swift */; };
 		8B6D1DC924683A49009B4F58 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D1DC824683A49009B4F58 /* SecondViewController.swift */; };
@@ -36,6 +37,7 @@
 		8B0C14F9245EC75900281438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0C14FB245EC75900281438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B0F0952246AB18A00A3E078 /* NotificationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPublisher.swift; sourceTree = "<group>"; };
+		8B3DE611246C51A80093BD88 /* Retrieve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Retrieve.swift; sourceTree = "<group>"; };
 		8B4BCAA7246302C80071B51B /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; usesTabs = 1; };
 		8B62527D2461AD8D002C35EA /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		8B6D1DC824683A49009B4F58 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				8B0C14F3245EC75700281438 /* HealthMonitor.xcdatamodeld */,
 				8B4BCAA7246302C80071B51B /* Report.swift */,
+				8B3DE611246C51A80093BD88 /* Retrieve.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				8B6D1DCD2469AFD3009B4F58 /* ThirdViewController.swift in Sources */,
 				8B0C14EB245EC75700281438 /* SceneDelegate.swift in Sources */,
 				8B4BCAA8246302C80071B51B /* Report.swift in Sources */,
+				8B3DE612246C51A80093BD88 /* Retrieve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

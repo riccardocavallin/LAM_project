@@ -17,6 +17,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var summaryButton: UIButton!
 	
+	let model = Retrieve()
     var data: Date?
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
@@ -47,22 +48,13 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 		} else {
 			aggiungiReport.isHidden = true
 		}
-		dailyReports = findReportsByDay(matching: data!)
+		dailyReports = model.findReportsByDay(matching: data!)
 		if dailyReports?.count ?? 1 > 1 {
 			summaryButton.isHidden = false
 		} else {
 			summaryButton.isHidden = true
 		}
 		self.tableView.reloadData()
-	}
-	
-	// ritorna tutti i report con la data selezionata
-	func findReportsByDay(matching data:Date) -> [Report]? {
-		let request: NSFetchRequest<Report> = Report.fetchRequest()
-		request.predicate = NSPredicate(format: "data = %@", data as NSDate)
-		// filtrati in ordine di inserimento
-		request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
-		return try? context.fetch(request)
 	}
 	    
     // funzione che permette di passare la data alla view del form passando la data selezionata

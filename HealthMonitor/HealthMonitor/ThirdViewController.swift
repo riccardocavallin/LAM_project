@@ -26,7 +26,6 @@ class ThirdViewController: UIViewController {
         } else {
            oraImpostata.text = "Attualmente impostata alle \(hour) : \(minute)"
         }
-        
     }
     
     @IBAction func valueChanged(_ sender: Any) {

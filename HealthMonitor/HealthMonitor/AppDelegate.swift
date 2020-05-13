@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 	var window: UIWindow?
 	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		// tastiera che si adatta alla view
 		IQKeyboardManager.shared.enable = true
+		IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Fine"
 		UNUserNotificationCenter.current().delegate = self
 		// richiesta permesso di notifica
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
@@ -32,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let identifier = response.actionIdentifier
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch identifier {
             
@@ -41,12 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler()
         case UNNotificationDefaultActionIdentifier:
             print("The user opened the app from the notification")
-			if let vc = storyboard.instantiateViewController(withIdentifier:"FormViewController") as? FormViewController,
-				let tabBarController = self.window?.rootViewController as? UITabBarController,
-				let navController = tabBarController.selectedViewController as? UINavigationController {
-				navController.pushViewController(vc, animated: true)
-			}
-
             completionHandler()
         default:
             print("Default case")

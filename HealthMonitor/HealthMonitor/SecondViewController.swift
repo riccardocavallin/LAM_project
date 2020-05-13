@@ -18,6 +18,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     private let context = AppDelegate.viewContext // per accedere al database
     private var temperature : [NSDecimalNumber]? = nil
     private var glicemia: [Int16]?
+    let model = Retrieve()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-         if let dailyReports = findAllreports() {
+        if let dailyReports = model.findLastWeekReports() {
             // recupero tutte le temperature e i parametri glicemia con il metodo map
             temperature = dailyReports.map{$0.temperatura!}
             glicemia = dailyReports.map{$0.glicemia}
@@ -112,19 +113,6 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         glycemiaChart.xAxis.labelTextColor = .white
         glycemiaChart.xAxis.axisLineColor = .white
         glycemiaChart.animate(xAxisDuration: 0.5)
-    }
-    
-    // estraggo tutti i dati dal database
-    private func findAllreports() -> [Report]? {
-        let today = NSDate()
-        let aWeekAgo = today.addingTimeInterval(-7*24*60*60)
-        let request: NSFetchRequest<Report> = Report.fetchRequest()
-        // estraggo solo i report dell'ultima settimana
-        request.predicate = NSPredicate(format: "data > %@ AND data < %@", aWeekAgo, today)
-        // ordinamento per data
-        request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
-        // se fallisce restituisce nil
-        return try? context.fetch(request)
     }
     
     // converte i dati della glicemia nel formato giusto per plottarli
