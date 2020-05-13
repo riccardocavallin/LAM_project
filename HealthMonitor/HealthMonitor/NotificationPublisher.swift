@@ -12,7 +12,7 @@ import UserNotifications
 
 class NotificationPublisher {
     
-   func sendNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
+    func sendNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, day: Int, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -24,6 +24,7 @@ class NotificationPublisher {
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
+        dateComponents.hour = day
         dateComponents.hour = hour
         dateComponents.minute = minute
         

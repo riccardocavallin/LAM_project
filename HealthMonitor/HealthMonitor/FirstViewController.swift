@@ -21,6 +21,8 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
 	var schedule : Bool = true
+	let defaults = UserDefaults.standard // variabile per accedere alle preferenze dell'utente
+	private let notificationPublisher = NotificationPublisher()
 	
     
     override func viewDidLoad() {
@@ -121,6 +123,15 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 			self.dailyReports?.remove(at: indexPath.row)
 			// eliminazione dalla tabella
 			self.tableView.deleteRows(at: [indexPath], with: .automatic)
+			if self.dailyReports?.count == 0 {
+				// se non ci sono più report devo rimettere la notifica per il giorno odierno
+				let date = Date()
+				let calendar = Calendar.current
+				let dayCurrent = calendar.component(.day, from: date)
+				let hour = self.defaults.integer(forKey: "oraNotificaReport")
+				let minute = self.defaults.integer(forKey: "minutoNotificaReport")
+				self.notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+			}
 			completion(true)
 		}
 		action.backgroundColor = .red

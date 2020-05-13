@@ -33,7 +33,8 @@ class ThirdViewController: UIViewController {
         // rimuovo la notifica precedentemente programmata
         notificationPublisher.deleteNotification(id: "reportReminder")
         let date = hourPicker.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let components = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
+        let day = components.day!
         let hour = components.hour!
         let minute = components.minute!
         saveHourNotificationPreference(hour: hour, minute: minute)
@@ -43,7 +44,7 @@ class ThirdViewController: UIViewController {
            oraImpostata.text = "Impostato alle \(hour):\(minute)"
         }
         // imposto uan nuova notifica per il nuovo orario
-        notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+        notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
     }
     
     private func saveHourNotificationPreference(hour: Int, minute: Int) {
