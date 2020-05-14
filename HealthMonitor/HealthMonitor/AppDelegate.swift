@@ -13,8 +13,6 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 	
-	var window: UIWindow?
-	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// tastiera che si adatta alla view
 		IQKeyboardManager.shared.enable = true
@@ -32,21 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
             
-    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //
-    //        // instantiate the view controller we want to show from storyboard
-    //        // root view controller is tab bar controller
-    //        // the selected tab is a navigation controller
-    //        // then we push the new view controller to it
-    //        if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController,
-    //            let tabBarController = self.window?.rootViewController as? UITabBarController,
-    //            let navController = tabBarController.selectedViewController as? UINavigationController {
-    //
-    //                // you can access custom data of the push notification by using userInfo property
-    //                // response.notification.request.content.userInfo
-    //                navController.pushViewController(conversationVC, animated: true)
-    //        }
-    //        completionHandler()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+            // instantiate the view controller we want to show from storyboard
+            // root view controller is tab bar controller
+            // the selected tab is a navigation controller
+            // then we push the new view controller to it
+//			if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
+//				print("ciao")
+//				let rootViewController = self.window!.rootViewController as! UITabBarController
+//				print("ciao0")
+//				let navController = rootViewController.selectedViewController as? UINavigationController
+//				print("cia1")
+//				navController!.pushViewController(conversationVC, animated: true)
+//				print("ciao2")
+//            }
+            completionHandler()
             let identifier = response.actionIdentifier
 
             switch identifier {
