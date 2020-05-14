@@ -11,60 +11,17 @@ import CoreData
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// tastiera che si adatta alla view
 		IQKeyboardManager.shared.enable = true
 		IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Fine"
-		UNUserNotificationCenter.current().delegate = self
 		// richiesta permesso di notifica
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         return true
     }
-	
-	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            print("Sto per mandare la notifica")
-            completionHandler([.badge, .sound, .alert])
-        }
-        
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    
-            // instantiate the view controller we want to show from storyboard
-            // root view controller is tab bar controller
-            // the selected tab is a navigation controller
-            // then we push the new view controller to it
-//			if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
-//				print("ciao")
-//				let rootViewController = self.window!.rootViewController as! UITabBarController
-//				print("ciao0")
-//				let navController = rootViewController.selectedViewController as? UINavigationController
-//				print("cia1")
-//				navController!.pushViewController(conversationVC, animated: true)
-//				print("ciao2")
-//            }
-            completionHandler()
-            let identifier = response.actionIdentifier
 
-            switch identifier {
-
-            case UNNotificationDismissActionIdentifier:
-                print("The notification was dismissed")
-                completionHandler()
-            case UNNotificationDefaultActionIdentifier:
-                print("The user opened the app from the notification")
-                completionHandler()
-            default:
-                print("Default case")
-                completionHandler()
-
-            }
-            
-        }
-
-	
 
     // MARK: UISceneSession Lifecycle
 

@@ -12,7 +12,16 @@ import UserNotifications
 
 class NotificationPublisher {
     
-    func sendNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, day: Int, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
+    func sendReportReminderNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, day: Int, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
+        
+        // azione di posticipa notifica
+        let postponeAction = UNNotificationAction(identifier: "posticipa", title: "Posticipa di 30 min" , options: [])
+        
+        // categorie
+        let category = UNNotificationCategory(identifier: "reportCategory", actions: [postponeAction], intentIdentifiers: [], options: [])
+        
+        // aggiungo la categoria al framework delle notifiche
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -20,7 +29,7 @@ class NotificationPublisher {
         // aggiungo 1 al badge di notifica
         content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + badge)
         content.sound = sound
-        content.categoryIdentifier = "category"
+        content.categoryIdentifier = "reportCategory"
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -37,13 +46,6 @@ class NotificationPublisher {
                 print(error!.localizedDescription)
             }
         }
-       
-        
-        
-        // action
-        let action = UNNotificationAction(identifier: idAction, title: idTitle, options: .foreground)
-        let category = UNNotificationCategory(identifier: "category", actions: [action], intentIdentifiers: [])
-        UNUserNotificationCenter.current().setNotificationCategories([category])
         
     }
     

@@ -23,7 +23,7 @@ class FormViewController: UIViewController {
     var data: Date? = nil
 	private let notificationPublisher = NotificationPublisher()
 	// variabile per accedere alle preferenze dell'utente
-	let defaults = UserDefaults.standard
+	private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ class FormViewController: UIViewController {
 			let hour = defaults.integer(forKey: "oraNotificaReport")
 			let minute = defaults.integer(forKey: "minutoNotificaReport")
 			// imposto uan nuova notifica per domani
-			notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent+1 , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+			notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent+1 , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
         } catch {
             fatalError("Errore nel salvataggio: \(error)")
         }

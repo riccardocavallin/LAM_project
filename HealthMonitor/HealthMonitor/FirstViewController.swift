@@ -122,7 +122,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 				let dayCurrent = calendar.component(.day, from: date)
 				let hour = self.defaults.integer(forKey: "oraNotificaReport")
 				let minute = self.defaults.integer(forKey: "minutoNotificaReport")
-				self.notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+				self.notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
 			}
 			completion(true)
 		}

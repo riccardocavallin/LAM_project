@@ -23,12 +23,15 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var pickerData = ["Temperatura", "Pressione minima", "Pressione massima", "Glicemia", "Battito"]
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         self.paramPicker.delegate = self
         self.paramPicker.dataSource = self
-        
-        setupAddTargetIsNotEmptyTextFields()
         hourPicker.datePickerMode = .time
+        setupAddTargetIsNotEmptyTextFields()
+        setDefaultLabels()
+    }
+    
+    private func setDefaultLabels() {
         let hour = checkForHourPreference().hour
         let minute = checkForHourPreference().minute
         if minute < 10 {
@@ -41,7 +44,6 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if (isParamSetted) {
             parametroImpostato.text = "Attualmente impostato a \(pickerData[parametroMonitrato])"
         }
-        
     }
     
     // funzioni della classe UIPickerViewDataSource
@@ -80,7 +82,7 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
            oraImpostata.text = "Impostato alle \(hour):\(minute)"
         }
         // imposto uan nuova notifica per il nuovo orario
-        notificationPublisher.sendNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+        notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
     }
     
     private func saveHourNotificationPreference(hour: Int, minute: Int) {

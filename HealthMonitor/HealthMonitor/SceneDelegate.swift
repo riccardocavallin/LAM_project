@@ -8,17 +8,78 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+	private let notificationPublisher = NotificationPublisher()
+	private let defaults = UserDefaults.standard
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+		UNUserNotificationCenter.current().delegate = self
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+	
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+				print("Sto per mandare la notifica")
+				completionHandler([.badge, .sound, .alert])
+			}
+			
+			func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+				
+				let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		
+				// instantiate the view controller we want to show from storyboard
+				// root view controller is tab bar controller
+				// the selected tab is a navigation controller
+				// then we push the new view controller to it
+	
+				completionHandler()
+				let identifier = response.actionIdentifier
+
+				switch identifier {
+
+				case UNNotificationDismissActionIdentifier: // notifica cancellata
+					// tolgo 1 al badge di notifica
+					UIApplication.shared.applicationIconBadgeNumber -= 1
+					print("The notification was dismissed")
+					completionHandler()
+				case UNNotificationDefaultActionIdentifier: // notifica viene aperta
+					print("The user opened the app from the notification")
+					// tolgo 1 al badge di notifica
+					UIApplication.shared.applicationIconBadgeNumber -= 1
+					if  let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
+//						print("ciao")
+//						let rootViewController = self.window!.rootViewController as! UITabBarController
+//						print("ciao0")
+//						let navController = rootViewController.selectedViewController as? UINavigationController
+//						print("ciao1")
+						
+						window?.rootViewController = formVC
+						window?.makeKeyAndVisible()
+					}
+					completionHandler()
+				case "posticipa": // utente ha cliccato sull'action per posticipare
+					// tolgo 1 al badge di notifica
+					UIApplication.shared.applicationIconBadgeNumber -= 1
+					let date = Date()
+					let calendar = Calendar.current
+					let dayCurrent = calendar.component(.day, from: date)
+					let hour = defaults.integer(forKey: "oraNotificaReport")
+					let minute = defaults.integer(forKey: "minutoNotificaReport")
+					// imposto una nuova notifica fra 30 minuti
+					notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute + 30, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+					completionHandler()
+					
+				default:
+					print("Default case")
+					completionHandler()
+
+				}
+				
+			}
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -30,8 +91,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-		// quando l'app è attiva viene tolto il badge di notifica
-		UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
