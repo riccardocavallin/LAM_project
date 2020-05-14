@@ -52,7 +52,5 @@ class NotificationPublisher {
         center.removePendingNotificationRequests(withIdentifiers: [id])
     }
     
-    
-    
 }
 

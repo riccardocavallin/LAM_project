@@ -39,6 +39,7 @@ class FormViewController: UIViewController {
 		heartRateField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
 	}
 	
+	// attiva il bottone all'inserimento dei dati
 	@objc func textFieldsIsNotEmpty(sender: UITextField) {
 
 	 sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
@@ -103,7 +104,6 @@ class FormViewController: UIViewController {
     }
 	
 	private func resetLabels() {
-		// reset delle labels
         temperatureField.text = nil
         maxPressureField.text = nil
         minPressureField.text = nil
