@@ -261,19 +261,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="xht-hB-EJ2" userLabel="Container">
-                                <rect key="frame" x="224.5" y="155" width="321" height="628"/>
+                                <rect key="frame" x="224.5" y="155" width="319" height="729"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-uA-eLh">
-                                        <rect key="frame" x="0.0" y="0.0" width="321" height="540"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-uA-eLh">
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="650"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura corporea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5F-9I-58j">
-                                                <rect key="frame" x="0.0" y="0.0" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ºC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-F5-wKa">
-                                                <rect key="frame" x="0.0" y="46" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="54.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
@@ -281,46 +281,46 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACB-A0-0vO">
-                                                <rect key="frame" x="0.0" y="92" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="109" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXy-TX-eg7">
-                                                <rect key="frame" x="0.0" y="138" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="163.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YH-2Z-vGP">
-                                                <rect key="frame" x="0.0" y="184" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="218" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vzG-Z4-0cZ">
-                                                <rect key="frame" x="0.0" y="230" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="272.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuw-CZ-WHV">
-                                                <rect key="frame" x="0.0" y="276" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="327" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mg/dl" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IS8-TE-BXe">
-                                                <rect key="frame" x="0.0" y="322" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="381.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito cardiaco" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-zq-RF4">
-                                                <rect key="frame" x="0.0" y="368" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="436" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Battiti al minuto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQc-CB-kCO">
-                                                <rect key="frame" x="0.0" y="414" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="490.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
@@ -328,13 +328,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bo-LI-XE0">
-                                                <rect key="frame" x="0.0" y="460" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="545" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Qualche informazione aggiuntiva da ricordare" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-J6-SfO">
-                                                <rect key="frame" x="0.0" y="506" width="321" height="34"/>
+                                                <rect key="frame" x="0.0" y="599.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -342,11 +342,42 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="340" id="Nrs-hC-NC5"/>
+                                            <constraint firstAttribute="height" constant="400" id="PF2-4E-e9R">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="340"/>
+                                            </constraint>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Nrs-hC-NC5"/>
+                                                <exclude reference="PF2-4E-e9R"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <exclude reference="Nrs-hC-NC5"/>
+                                                <exclude reference="PF2-4E-e9R"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-Lt-dOf">
-                                        <rect key="frame" x="143" y="577" width="35" height="51"/>
+                                        <rect key="frame" x="142" y="687" width="35" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="NNO-b1-H7O"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="NNO-b1-H7O"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="NNO-b1-H7O"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="insertReport:" destination="Kcg-yx-DfW" eventType="touchUpInside" id="F3p-ao-tIC"/>
                                         </connections>
@@ -354,9 +385,10 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuovo Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-vZ-GbF">
-                                <rect key="frame" x="289" y="70" width="192" height="70"/>
+                                <rect key="frame" x="259" y="70" width="250" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="JKX-6Z-DDq"/>
+                                    <constraint firstAttribute="width" constant="250" id="XZQ-Qb-BaZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -367,12 +399,26 @@
                         <constraints>
                             <constraint firstItem="xht-hB-EJ2" firstAttribute="leading" secondItem="y6U-Vt-dkh" secondAttribute="leading" constant="224.5" id="E5K-hi-bER"/>
                             <constraint firstItem="xht-hB-EJ2" firstAttribute="top" secondItem="j5b-vZ-GbF" secondAttribute="bottom" constant="15" id="JOn-m1-WKc"/>
-                            <constraint firstItem="j5b-vZ-GbF" firstAttribute="leading" secondItem="y6U-Vt-dkh" secondAttribute="leading" constant="289" id="PnH-g0-Ju7"/>
                             <constraint firstItem="j5b-vZ-GbF" firstAttribute="centerX" secondItem="xht-hB-EJ2" secondAttribute="centerX" id="bPr-cy-JFF"/>
+                            <constraint firstItem="y6U-Vt-dkh" firstAttribute="bottom" secondItem="xht-hB-EJ2" secondAttribute="bottom" constant="90" id="fJx-em-FzL"/>
+                            <constraint firstItem="xht-hB-EJ2" firstAttribute="centerX" secondItem="S4Y-yV-rxg" secondAttribute="centerX" id="iVb-ZV-Jig"/>
                             <constraint firstItem="j5b-vZ-GbF" firstAttribute="top" secondItem="y6U-Vt-dkh" secondAttribute="top" constant="20" id="skA-eS-1ar"/>
                             <constraint firstItem="y6U-Vt-dkh" firstAttribute="bottom" secondItem="xht-hB-EJ2" secondAttribute="bottom" constant="191" id="xSA-6B-hoY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y6U-Vt-dkh"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fJx-em-FzL"/>
+                                <exclude reference="iVb-ZV-Jig"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="fJx-em-FzL"/>
+                                <exclude reference="xSA-6B-hoY"/>
+                                <include reference="iVb-ZV-Jig"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ScX-yA-AUd"/>
                     <connections>
