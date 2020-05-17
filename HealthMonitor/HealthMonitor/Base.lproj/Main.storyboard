@@ -10,7 +10,7 @@
         <!--Health Monitor-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="First" id="9pv-A4-QxB" customClass="FirstViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,12 +250,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1515.625" y="-320.5078125"/>
+            <point key="canvasLocation" x="1520" y="-581"/>
         </scene>
         <!--Form View Controller-->
         <scene sceneID="gI8-hU-3R3">
             <objects>
-                <viewController id="Kcg-yx-DfW" customClass="FormViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Form" id="Kcg-yx-DfW" customClass="FormViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S4Y-yV-rxg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,7 +388,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPJ-Db-gIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GCk-E8-Am0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="-903"/>
+            <point key="canvasLocation" x="2227" y="-1147"/>
         </scene>
         <!--Grafici-->
         <scene sceneID="wg7-f3-ORb">
@@ -456,12 +456,165 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="359.765625"/>
+            <point key="canvasLocation" x="738" y="128"/>
+        </scene>
+        <!--Impostazioni-->
+        <scene sceneID="VgX-na-vy5">
+            <objects>
+                <viewController id="BKD-ct-BaA" userLabel="Impostazioni" customClass="ThirdViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z86-a5-T85" userLabel="Third View" customClass="ThirdVi">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orario notifica per inseire report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-gs-PHW">
+                                <rect key="frame" x="234.5" y="74" width="299" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eik-H6-JyG">
+                                <rect key="frame" x="224" y="115.5" width="320" height="216"/>
+                                <locale key="locale" localeIdentifier="it_IT"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="BKD-ct-BaA" eventType="valueChanged" id="lDa-IU-JO9"/>
+                                </connections>
+                            </datePicker>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-OV-tmv">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8va-RF-aTQ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Impostazioni" id="oD0-Rd-ZLm"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attualmente impostato di default alle 19:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9E-2e-81V">
+                                <rect key="frame" x="220.5" y="336.5" width="327.5" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="qtt-HZ-EGE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parametro da monitorare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO7-Gk-oIN">
+                                <rect key="frame" x="267.5" y="417" width="233" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-Im-g9c" userLabel="Parametro Picker">
+                                <rect key="frame" x="224" y="458.5" width="320" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="8SR-ko-CBR"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attualmente non impostato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnY-LX-UTz" userLabel="Parametro Impostato">
+                                <rect key="frame" x="234" y="613.5" width="300" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="7ot-Oo-6hp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-Fp-fh1" userLabel="Durata Stack">
+                                <rect key="frame" x="293.5" y="664" width="181" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Durata:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-hf-JcU">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="qii-eE-med"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In giorni" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Gr-xV-XeH" userLabel="Giorni">
+                                        <rect key="frame" x="101" y="0.0" width="80" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-ql-AMh" userLabel="Soglia Stack">
+                                <rect key="frame" x="288.5" y="728" width="191" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valore soglia:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-W0-k8J" userLabel="Valore soglia:">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="teR-ze-GR2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3oc-bX-xs6" userLabel="Soglia">
+                                        <rect key="frame" x="141" y="0.0" width="50" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="5fD-US-koc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pev-w3-hkV">
+                                <rect key="frame" x="366.5" y="777" width="35" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="insertPref:" destination="BKD-ct-BaA" eventType="touchUpInside" id="eeq-6f-o2U"/>
+                                    <action selector="updateReport:" destination="zLa-0l-0OB" eventType="touchUpInside" id="eVR-Mn-VcJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cnY-LX-UTz" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="FTt-7q-QBU"/>
+                            <constraint firstItem="Eik-H6-JyG" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="P6l-uw-2Rp"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="top" secondItem="V4n-wd-RhF" secondAttribute="top" id="QBY-S5-3hp"/>
+                            <constraint firstItem="A9E-2e-81V" firstAttribute="top" secondItem="Eik-H6-JyG" secondAttribute="bottom" constant="5" id="QX6-OR-bgU"/>
+                            <constraint firstItem="XGW-Fp-fh1" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="Qet-iI-hfc"/>
+                            <constraint firstItem="XGW-Fp-fh1" firstAttribute="top" secondItem="cnY-LX-UTz" secondAttribute="bottom" constant="30" id="REm-5C-7du"/>
+                            <constraint firstItem="Rq7-Im-g9c" firstAttribute="top" secondItem="ZO7-Gk-oIN" secondAttribute="bottom" constant="15" id="U5x-NI-Khd"/>
+                            <constraint firstItem="ZO7-Gk-oIN" firstAttribute="top" secondItem="A9E-2e-81V" secondAttribute="bottom" constant="60" id="YYs-7r-53u"/>
+                            <constraint firstItem="Eik-H6-JyG" firstAttribute="top" secondItem="jbz-gs-PHW" secondAttribute="bottom" constant="15" id="Z7Z-cf-hhA"/>
+                            <constraint firstItem="cnY-LX-UTz" firstAttribute="top" secondItem="Rq7-Im-g9c" secondAttribute="bottom" constant="5" id="baA-oD-DDc"/>
+                            <constraint firstItem="pev-w3-hkV" firstAttribute="top" secondItem="Aha-ql-AMh" secondAttribute="bottom" constant="15" id="dKZ-A7-Btm"/>
+                            <constraint firstItem="A9E-2e-81V" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="gOK-uQ-rmg"/>
+                            <constraint firstItem="ZO7-Gk-oIN" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="gWG-6j-95X"/>
+                            <constraint firstItem="Rq7-Im-g9c" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="hgm-KP-sdu"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="leading" secondItem="V4n-wd-RhF" secondAttribute="leading" id="iJl-H3-ZVM"/>
+                            <constraint firstItem="XGW-Fp-fh1" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="kWA-Hq-FBI"/>
+                            <constraint firstItem="Aha-ql-AMh" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="lhp-VN-Ufg"/>
+                            <constraint firstItem="jbz-gs-PHW" firstAttribute="top" secondItem="bsK-OV-tmv" secondAttribute="bottom" constant="30" id="o3s-XR-VUV"/>
+                            <constraint firstItem="bsK-OV-tmv" firstAttribute="centerX" secondItem="jbz-gs-PHW" secondAttribute="centerX" id="rb0-ah-Uu6"/>
+                            <constraint firstItem="jbz-gs-PHW" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="rdl-hn-WHG"/>
+                            <constraint firstItem="Aha-ql-AMh" firstAttribute="top" secondItem="XGW-Fp-fh1" secondAttribute="bottom" constant="30" id="riv-jc-itx"/>
+                            <constraint firstItem="pev-w3-hkV" firstAttribute="centerX" secondItem="Z86-a5-T85" secondAttribute="centerX" id="vOp-tr-6jQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V4n-wd-RhF"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Impostazioni" image="keyboard" catalog="system" id="1mF-uo-SnO"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="pev-w3-hkV" id="vpC-ZG-hfK"/>
+                        <outlet property="durataField" destination="0Gr-xV-XeH" id="z6L-bd-eZI"/>
+                        <outlet property="hourPicker" destination="Eik-H6-JyG" id="HdV-m2-rKZ"/>
+                        <outlet property="oraImpostata" destination="A9E-2e-81V" id="nWB-tZ-bYL"/>
+                        <outlet property="paramPicker" destination="Rq7-Im-g9c" id="U5g-8O-fOQ"/>
+                        <outlet property="parametroImpostato" destination="cnY-LX-UTz" id="YZN-Sw-2A4"/>
+                        <outlet property="sogliaField" destination="3oc-bX-xs6" id="lSb-Nd-0Yb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSC-PW-a40" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737.5" y="825"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tab" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -470,6 +623,7 @@
                     <connections>
                         <segue destination="rzu-Jw-9M4" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="BKD-ct-BaA" kind="relationship" relationship="viewControllers" id="fjS-xp-Wuf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -479,7 +633,7 @@
         <!--Calendario-->
         <scene sceneID="txy-9l-gns">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rzu-Jw-9M4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Nav" automaticallyAdjustsScrollViewInsets="NO" id="rzu-Jw-9M4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nEJ-JU-RtG">
@@ -493,7 +647,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvG-Ec-s5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320.5078125"/>
+            <point key="canvasLocation" x="738" y="-574"/>
         </scene>
         <!--Edit Form View Controller-->
         <scene sceneID="u35-ty-UPi">
@@ -634,7 +788,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A45-zJ-b2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Q01-3G-iUl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="-269"/>
+            <point key="canvasLocation" x="2227" y="-465"/>
         </scene>
         <!--Summary View Controller-->
         <scene sceneID="uDU-S7-vcB">
@@ -802,11 +956,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiZ-U0-T10" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2226.5625" y="403.7109375"/>
+            <point key="canvasLocation" x="2227" y="255"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="124"/>
+        <image name="keyboard" catalog="system" width="128" height="70"/>
     </resources>
 </document>

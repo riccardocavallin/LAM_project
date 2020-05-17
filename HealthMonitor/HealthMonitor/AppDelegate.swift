@@ -8,16 +8,20 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+		// tastiera che si adatta alla view
+		IQKeyboardManager.shared.enable = true
+		IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Fine"
+		// richiesta permesso di notifica
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         return true
     }
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -89,4 +93,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 

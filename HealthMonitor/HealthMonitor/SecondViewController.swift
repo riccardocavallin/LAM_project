@@ -15,17 +15,19 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var temperatureChart: LineChartView!
     @IBOutlet weak var glycemiaChart: BarChartView!
     
-    let context = AppDelegate.viewContext // per accedere al database
-    var temperature : [NSDecimalNumber]? = nil
-    var glicemia: [Int16]?
+    private let context = AppDelegate.viewContext // per accedere al database
+    private var temperature : [NSDecimalNumber]? = nil
+    private var glicemia: [Int16]?
+    let model = Retrieve()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addStyle()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-         if let dailyReports = findAllreports() {
+        if let dailyReports = model.findLastWeekReports() {
             // recupero tutte le temperature e i parametri glicemia con il metodo map
             temperature = dailyReports.map{$0.temperatura!}
             glicemia = dailyReports.map{$0.glicemia}
@@ -35,7 +37,23 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    func createTempChart() {
+    // stile grafico per i grafici
+    private func addStyle() {
+        temperatureChart.layer.shadowColor = UIColor.white.cgColor
+        temperatureChart.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        temperatureChart.layer.shadowRadius = 15.0
+        temperatureChart.layer.shadowOpacity = 0.5
+        temperatureChart.layer.cornerRadius = 15.0
+        temperatureChart.clipsToBounds = true
+        glycemiaChart.layer.shadowColor = UIColor.white.cgColor
+        glycemiaChart.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        glycemiaChart.layer.shadowRadius = 15.0
+        glycemiaChart.layer.shadowOpacity = 0.9
+        glycemiaChart.layer.cornerRadius = 15.0
+        glycemiaChart.clipsToBounds = true
+    }
+    
+    private func createTempChart() {
         let yTemp = yValuesTemp(temperature: temperature!)
         let setTemp = LineChartDataSet(entries: yTemp, label: "Temperature")
         setTemp.drawCirclesEnabled = false
@@ -53,7 +71,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         customizeTempChart()
     }
     
-    func customizeTempChart() {
+    private func customizeTempChart() {
         temperatureChart.backgroundColor = #colorLiteral(red: 0.02720985375, green: 0.5578963757, blue: 0.9526826739, alpha: 0.6221362155)
         temperatureChart.rightAxis.enabled = false
         let asseY = temperatureChart.leftAxis
@@ -70,7 +88,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         temperatureChart.animate(xAxisDuration: 0.5)
     }
     
-    func createGlycemChart() {
+    private func createGlycemChart() {
         let yGlicem = yValuesGlycem(glicemia: glicemia!)
         let setGlicem = BarChartDataSet(entries: yGlicem, label: "Glicemia")
         setGlicem.setColor(#colorLiteral(red: 0.08594541997, green: 0.757057488, blue: 0.07849871367, alpha: 0.8329179448))
@@ -80,7 +98,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         customizeGlicemChart()
     }
     
-    func customizeGlicemChart() {
+    private func customizeGlicemChart() {
         glycemiaChart.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 0.6933833397)
         glycemiaChart.rightAxis.enabled = false
         let asseY = glycemiaChart.leftAxis
@@ -97,21 +115,8 @@ class SecondViewController: UIViewController, ChartViewDelegate {
         glycemiaChart.animate(xAxisDuration: 0.5)
     }
     
-    // estraggo tutti i dati dal database
-    func findAllreports() -> [Report]? {
-        let today = NSDate()
-        let aWeekAgo = today.addingTimeInterval(-7*24*60*60)
-        let request: NSFetchRequest<Report> = Report.fetchRequest()
-        // estraggo solo i report dell'ultima settimana
-        request.predicate = NSPredicate(format: "data > %@ AND data < %@", aWeekAgo, today)
-        // ordinamento per data
-        request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
-        // se fallisce restituisce nil
-        return try? context.fetch(request)
-    }
-    
     // converte i dati della glicemia nel formato giusto per plottarli
-    func yValuesTemp(temperature: [NSDecimalNumber?]) -> [ChartDataEntry] {
+    private func yValuesTemp(temperature: [NSDecimalNumber?]) -> [ChartDataEntry] {
         var values = [ChartDataEntry]()
         for i in 0..<temperature.count {
             values.append(ChartDataEntry(x: Double(i), y: Double(truncating: temperature[i]!)))
@@ -120,7 +125,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     }
     
     // converte i dati della glicemia nel formato giusto per plottarli
-    func yValuesGlycem(glicemia: [Int16?]) -> [BarChartDataEntry] {
+    private func yValuesGlycem(glicemia: [Int16?]) -> [BarChartDataEntry] {
         var values = [BarChartDataEntry]()
         for i in 0..<glicemia.count {
             values.append(BarChartDataEntry(x: Double(i), y: Double(glicemia[i]!)))

@@ -17,9 +17,14 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var summaryButton: UIButton!
 	
+	let model = Retrieve()
     var data: Date?
 	var dailyReports : [Report]?
     let context = AppDelegate.viewContext // per accedere al database
+	var schedule : Bool = true
+	let defaults = UserDefaults.standard // variabile per accedere alle preferenze dell'utente
+	private let notificationPublisher = NotificationPublisher()
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,23 +42,19 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         //formatter.dateFormat = "dd-MM-YYYY"
         //data = formatter.string(from:date)
 		data = date
-		aggiungiReport.isHidden = false
-		dailyReports = findReportsByDay(matching: data!)
+		// il bottone per agguingere report non viene mostrato per le date future
+		if (data! < Date()) {
+			aggiungiReport.isHidden = false
+		} else {
+			aggiungiReport.isHidden = true
+		}
+		dailyReports = model.findReportsByDay(matching: data!)
 		if dailyReports?.count ?? 1 > 1 {
 			summaryButton.isHidden = false
 		} else {
 			summaryButton.isHidden = true
 		}
 		self.tableView.reloadData()
-	}
-	
-	// ritorna tutti i report con la data selezionata
-	func findReportsByDay(matching data:Date) -> [Report]? {
-		let request: NSFetchRequest<Report> = Report.fetchRequest()
-		request.predicate = NSPredicate(format: "data = %@", data as NSDate)
-		// filtrati in ordine di inserimento
-		request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
-		return try? context.fetch(request)
 	}
 	    
     // funzione che permette di passare la data alla view del form passando la data selezionata
@@ -81,6 +82,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
     @IBAction func aggiungiReportClicked(_ sender: Any) {
          performSegue(withIdentifier: "showReport", sender: self)
     }
+	
     
 }
 
@@ -113,6 +115,15 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 			self.dailyReports?.remove(at: indexPath.row)
 			// eliminazione dalla tabella
 			self.tableView.deleteRows(at: [indexPath], with: .automatic)
+			if self.dailyReports?.count == 0 {
+				// se non ci sono più report devo rimettere la notifica per il giorno odierno
+				let date = Date()
+				let calendar = Calendar.current
+				let dayCurrent = calendar.component(.day, from: date)
+				let hour = self.defaults.integer(forKey: "oraNotificaReport")
+				let minute = self.defaults.integer(forKey: "minutoNotificaReport")
+				self.notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+			}
 			completion(true)
 		}
 		action.backgroundColor = .red
@@ -154,5 +165,6 @@ class ReportTableViewCell: UITableViewCell {
 	
 	
 }
+
 
 

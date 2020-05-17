@@ -3,20 +3,24 @@ PODS:
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
   - FSCalendar (2.8.1)
+  - IQKeyboardManagerSwift (6.5.5)
 
 DEPENDENCIES:
   - Charts
   - FSCalendar
+  - IQKeyboardManagerSwift
 
 SPEC REPOS:
   trunk:
     - Charts
     - FSCalendar
+    - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
 
-PODFILE CHECKSUM: 75636f48f7a2e11ce4471b07eaef41987ab791d4
+PODFILE CHECKSUM: 27a85c6a4be610e914912b7a5c753f1256ffa7e5
 
 COCOAPODS: 1.9.1
