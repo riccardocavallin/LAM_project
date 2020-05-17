@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     }
 	
 	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-				print("Sto per mandare la notifica")
+				//print("Sto per mandare la notifica")
 				completionHandler([.badge, .sound, .alert])
 			}
 			
@@ -44,20 +44,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 				case UNNotificationDismissActionIdentifier: // notifica cancellata
 					// tolgo 1 al badge di notifica
 					UIApplication.shared.applicationIconBadgeNumber -= 1
-					print("The notification was dismissed")
+					//print("The notification was dismissed")
 					completionHandler()
 				case UNNotificationDefaultActionIdentifier: // notifica viene aperta
-					print("The user opened the app from the notification")
+					//print("The user opened the app from the notification")
 					// tolgo 1 al badge di notifica
 					UIApplication.shared.applicationIconBadgeNumber -= 1
-					if  let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
-//						print("ciao")
+					//let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController
+					if  let vc = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
 //						let rootViewController = self.window!.rootViewController as! UITabBarController
-//						print("ciao0")
 //						let navController = rootViewController.selectedViewController as? UINavigationController
-//						print("ciao1")
 						
-						window?.rootViewController = formVC
+						window?.rootViewController = vc
 						window?.makeKeyAndVisible()
 					}
 					completionHandler()

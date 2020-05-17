@@ -12,6 +12,7 @@ import UserNotifications
 
 class NotificationPublisher {
     
+    // notifica per ricordare di inserire un report
     func sendReportReminderNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, day: Int, hour: Int, minute: Int, id: String, idAction: String, idTitle: String) {
         
         // azione di posticipa notifica
@@ -36,6 +37,33 @@ class NotificationPublisher {
         dateComponents.hour = day
         dateComponents.hour = hour
         dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let id = id
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+        
+    }
+    
+    // notifica esito del monitoraggio
+    func sendResultMonitorNotification(title: String, body: String, badge: Int, sound: UNNotificationSound, secondsLeft: Double, id: String) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        // aggiungo 1 al badge di notifica
+        content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + badge)
+        content.sound = sound
+        
+        // aggiungo tot secondi alla data corrente
+        let date = Date().addingTimeInterval(secondsLeft)
+        
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         

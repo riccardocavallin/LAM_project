@@ -12,6 +12,8 @@ import CoreData
 class Retrieve {
     
     let context = AppDelegate.viewContext // per accedere al database
+    // variabile per accedere alle preferenze dell'utente
+    private let defaults = UserDefaults.standard
     
     // restituisce tutti i report
     private func findReports() -> [Report]? {
@@ -42,6 +44,51 @@ class Retrieve {
         request.sortDescriptors = [NSSortDescriptor(key: "data", ascending: true)]
         // se fallisce restituisce nil
         return try? context.fetch(request)
+    }
+    
+    //funzione che ritorna la media degli ultimi x giorni di un dato parametro
+    func media(parametro: Int) -> Any? {
+        let result: Any?
+        // calcolo della data di partenza per estrarre i dati
+        let durata = defaults.integer(forKey: "durata")
+        let scadenza = defaults.object(forKey: "scadenza") as! Date
+        let parametro = defaults.integer(forKey: "parametro")
+        var dateComponent = DateComponents()
+        dateComponent.day = -5//-durata
+        // la data di partenza è la scadenza (oggi) - la durata
+        let partenza = Calendar.current.date(byAdding: dateComponent, to: scadenza)
+        // estraggo tutti i report dell'ultima settimana
+        let request: NSFetchRequest<Report> = Report.fetchRequest()
+        request.predicate = NSPredicate(format: "data > %@ AND data < %@", partenza! as NSDate, scadenza as NSDate)
+        let reports = try! context.fetch(request)
+        // calcolo la media adeguata in base al parametro da monitorare
+        print("Numero di reports: \(reports.count)")
+        print("partenza: \(String(describing: partenza))")
+        print("scadenza: \(scadenza)")
+        switch parametro {
+        case 0:
+            var temperatura : Decimal = 0
+            for report in reports {
+                temperatura = (report.temperatura! as Decimal) + temperatura
+            }
+            result = (temperatura / (Decimal(reports.count)))
+        case 1:
+            let pressioneMin = (reports.reduce(0, {$0 + $1.pressioneMin})) / Int16(reports.count)
+            result =  pressioneMin
+        case 2:
+            let pressioneMax = (reports.reduce(0, {$0 + $1.pressioneMax})) / Int16(reports.count)
+            result = pressioneMax
+        case 3:
+            let glicemia = (reports.reduce(0, {$0 + $1.glicemia})) / Int16(reports.count)
+            result = glicemia
+        case 4:
+            let battito = (reports.reduce(0, {$0 + $1.battito})) / Int16(reports.count)
+            result = battito
+        default:
+            print("default case")
+            result = nil
+        }
+        return result
     }
     
 }

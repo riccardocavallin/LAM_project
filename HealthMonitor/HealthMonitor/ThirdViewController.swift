@@ -39,7 +39,7 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         } else {
            oraImpostata.text = "Attualmente impostata alle \(hour) : \(minute)"
         }
-        let parametroMonitrato = defaults.integer(forKey: "monitora")
+        let parametroMonitrato = defaults.integer(forKey: "parametro")
         let isParamSetted = defaults.bool(forKey: "clicked")
         if (isParamSetted) {
             parametroImpostato.text = "Attualmente impostato a \(pickerData[parametroMonitrato])"
@@ -62,7 +62,7 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // azioni da fare quando viene selazionato un elemento
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         defaults.set(true, forKey: "clicked")
-        defaults.set(row, forKey: "monitora")
+        defaults.set(row, forKey: "parametro")
         parametroImpostato.text = "Attualmente impostato a \(pickerData[row])"
         
     }
@@ -121,14 +121,17 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
      confirmButton.isEnabled = true
     }
     
-    // viene cliccato il bottone "ok"
+    // viene cliccato il bottone "ok" per confermare i dati del monitoraggio
     @IBAction func insertPref(_ sender: Any) {
         let durata = Int(durataField.text!)
         let soglia = Int(sogliaField.text!)
+        var dateComponent = DateComponents()
+        dateComponent.day = durata
+        // aggiungo la durata alla data odierna per ottenere la scadenza
+        let scadenza = Calendar.current.date(byAdding: dateComponent, to: Date())
         defaults.set(durata, forKey: "durata")
+        defaults.set(scadenza, forKey: "scadenza")
         defaults.set(soglia, forKey: "soglia")
-        print(defaults.integer(forKey: "durata"))
-        print(defaults.integer(forKey: "soglia"))
         resetLabels()
     }
     
