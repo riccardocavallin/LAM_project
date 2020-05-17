@@ -21,6 +21,7 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let defaults = UserDefaults.standard // variabile per accedere alle preferenze dell'utente
     private let notificationPublisher = NotificationPublisher()
     var pickerData = ["Temperatura", "Pressione minima", "Pressione massima", "Glicemia", "Battito"]
+    let model = Retrieve()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,8 +82,16 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         } else {
            oraImpostata.text = "Impostato alle \(hour):\(minute)"
         }
-        // imposto uan nuova notifica per il nuovo orario
-        notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+        let data = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: Date()))
+        let reportsOggi = model.findReportsByDay(matching: data!)
+        // se ho già dei report oggi metto la notifica a domani
+        if reportsOggi!.count > 0 {
+            // imposto una nuova notifica per il nuovo orario
+            notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day+1, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+        } else { // altrimento la fisso già a partire da oggi
+            notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: day, hour: hour, minute: minute, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+        }
+        
     }
     
     private func saveHourNotificationPreference(hour: Int, minute: Int) {

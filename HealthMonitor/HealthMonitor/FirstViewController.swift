@@ -38,9 +38,6 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //let formatter = DateFormatter()
-        //formatter.dateFormat = "dd-MM-YYYY"
-        //data = formatter.string(from:date)
 		data = date
 		// il bottone per agguingere report non viene mostrato per le date future
 		if (data! < Date()) {

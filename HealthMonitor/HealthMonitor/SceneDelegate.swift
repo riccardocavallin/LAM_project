@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		UNUserNotificationCenter.current().delegate = self
+		UIApplication.shared.applicationIconBadgeNumber = 0
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 	
@@ -43,7 +44,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 
 				case UNNotificationDismissActionIdentifier: // notifica cancellata
 					// tolgo 1 al badge di notifica
-					UIApplication.shared.applicationIconBadgeNumber -= 1
 					//print("The notification was dismissed")
 					completionHandler()
 				case UNNotificationDefaultActionIdentifier: // notifica viene aperta
