@@ -122,7 +122,6 @@ class FormViewController: UIViewController {
 		let result = model.media(parametro: parametro) as! Int16
 		let soglia = defaults.integer(forKey: "soglia")
 		var body = ""
-		notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: "Notifica testttttt", badge: 1, sound: .default, secondsLeft: 0, id: "risultatiMonitoraggio")
 	
 		if today == giornoScadenza {
 			switch parametro {
