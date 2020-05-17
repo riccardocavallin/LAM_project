@@ -64,6 +64,11 @@ class FormViewController: UIViewController {
         let context = AppDelegate.viewContext
         let report = Report(context: context)
         
+		// se il form viene attivato dalle notifiche data è nil
+		// viene quindi assegnata alla data corrente
+		if data == nil {
+			data = Date()
+		}
         report.data = data! // controllo se arrivo da notifiche
         
 		let itLocale = Locale(identifier: "it_IT")

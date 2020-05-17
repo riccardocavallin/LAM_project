@@ -54,7 +54,7 @@ class Retrieve {
         let scadenza = defaults.object(forKey: "scadenza") as! Date
         let parametro = defaults.integer(forKey: "parametro")
         var dateComponent = DateComponents()
-        dateComponent.day = -5//-durata
+        dateComponent.day = -durata
         // la data di partenza è la scadenza (oggi) - la durata
         let partenza = Calendar.current.date(byAdding: dateComponent, to: scadenza)
         // estraggo tutti i report dell'ultima settimana
@@ -62,9 +62,6 @@ class Retrieve {
         request.predicate = NSPredicate(format: "data > %@ AND data < %@", partenza! as NSDate, scadenza as NSDate)
         let reports = try! context.fetch(request)
         // calcolo la media adeguata in base al parametro da monitorare
-        print("Numero di reports: \(reports.count)")
-        print("partenza: \(String(describing: partenza))")
-        print("scadenza: \(scadenza)")
         switch parametro {
         case 0:
             var temperatura : Decimal = 0
