@@ -20,10 +20,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -208,33 +208,43 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMy-Oi-ohJ">
-                                <rect key="frame" x="642" y="62" width="107" height="51"/>
-                                <state key="normal" title="Aggiungi report"/>
+                                <rect key="frame" x="719" y="65" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="aggiungiReportClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="MDo-jy-fAl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljC-i1-bUn">
-                                <rect key="frame" x="15" y="70" width="116" height="30"/>
+                                <rect key="frame" x="15" y="65" width="121" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Sommario report"/>
                                 <connections>
                                     <segue destination="BKP-s6-dYD" kind="presentation" identifier="showSummary" id="2ur-lD-Anz"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-sW-HDA" userLabel="Filtra Button">
+                                <rect key="frame" x="320.5" y="65" width="127" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Filtra tutti i report"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="645-pg-QIw" firstAttribute="top" secondItem="QMy-Oi-ohJ" secondAttribute="bottom" id="4zx-5p-MuT"/>
                             <constraint firstItem="ljC-i1-bUn" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="15" id="5yT-Tg-nOx"/>
+                            <constraint firstItem="Th1-sW-HDA" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="82l-fp-w8t"/>
                             <constraint firstItem="QMy-Oi-ohJ" firstAttribute="trailing" secondItem="645-pg-QIw" secondAttribute="trailing" id="Axk-g9-qZr"/>
                             <constraint firstItem="645-pg-QIw" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="113" id="BrW-bY-Sno"/>
                             <constraint firstItem="645-pg-QIw" firstAttribute="centerX" secondItem="dxX-FU-afr" secondAttribute="centerX" id="GG9-Ne-Xa3"/>
                             <constraint firstItem="645-pg-QIw" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="19" id="Gdl-o4-tni"/>
+                            <constraint firstItem="645-pg-QIw" firstAttribute="top" secondItem="Th1-sW-HDA" secondAttribute="bottom" constant="5" id="I7V-qR-KVk"/>
                             <constraint firstItem="dxX-FU-afr" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="OHW-gJ-QJ2"/>
                             <constraint firstItem="dxX-FU-afr" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="OtV-Un-McI"/>
-                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="12" id="chs-7O-i5t"/>
+                            <constraint firstItem="QMy-Oi-ohJ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="15" id="chs-7O-i5t"/>
+                            <constraint firstItem="Th1-sW-HDA" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="15" id="k2y-uF-Bek"/>
                             <constraint firstItem="645-pg-QIw" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="oYb-Vp-nz9"/>
-                            <constraint firstItem="ljC-i1-bUn" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="20" id="sGH-C3-zFJ"/>
+                            <constraint firstItem="ljC-i1-bUn" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="15" id="sGH-C3-zFJ"/>
                             <constraint firstItem="dxX-FU-afr" firstAttribute="top" secondItem="645-pg-QIw" secondAttribute="bottom" id="zDU-V9-GdD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -453,7 +463,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-fP-B0c" userLabel="Temp Stack">
                                 <rect key="frame" x="5" y="30" width="758" height="450"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7p-jL-zCl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7p-jL-zCl">
                                         <rect key="frame" x="0.0" y="0.0" width="758" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
