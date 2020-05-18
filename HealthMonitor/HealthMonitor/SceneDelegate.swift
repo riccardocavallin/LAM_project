@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		UNUserNotificationCenter.current().delegate = self
 		UIApplication.shared.applicationIconBadgeNumber = 0
+		// dark mode
+		window!.overrideUserInterfaceStyle = .dark
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 	

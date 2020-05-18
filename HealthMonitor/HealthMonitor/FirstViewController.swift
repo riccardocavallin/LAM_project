@@ -147,16 +147,32 @@ class ReportTableViewCell: UITableViewCell {
 	
 	
 	func setReport(index: Int, report: Report) {
+		// vengono visualizzato solo i parametri diversi da 0
 		indexLabel.text = "\(index)"
-		if tempInsLabel.text != nil {
+		if report.temperatura != 0 {
 			tempInsLabel.text = "\(report.temperatura!)"
+			tempInsLabel.textColor = .yellow
 		}
-		pMinInsLabel.text = "\(report.pressioneMin)"
-		pMaxInsLabel.text = "\(report.pressioneMax)"
-		glicInsLabel.text = "\(report.glicemia)"
-		battitoInsLabel.text = "\(report.battito)"
-		noteInsLabel.text = "\(report.note!)"
-		
+		if report.pressioneMin > 0 {
+			pMinInsLabel.text = "\(report.pressioneMin)"
+			pMinInsLabel.textColor = .yellow
+		}
+		if report.pressioneMax > 0 {
+			pMaxInsLabel.text = "\(report.pressioneMax)"
+			pMaxInsLabel.textColor = .yellow
+		}
+		if report.glicemia > 0 {
+			glicInsLabel.text = "\(report.glicemia)"
+			glicInsLabel.textColor = .yellow
+		}
+		if report.battito > 0 {
+			battitoInsLabel.text = "\(report.battito)"
+			battitoInsLabel.textColor = .yellow
+		}
+		if report.note != nil {
+			noteInsLabel.text = "\(String(describing: report.note!))"
+			noteInsLabel.textColor = .yellow
+		}
 		
 	}
 	

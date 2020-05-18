@@ -42,21 +42,23 @@ class FormViewController: UIViewController {
 	
 	// attiva il bottone all'inserimento dei dati
 	@objc func textFieldsIsNotEmpty(sender: UITextField) {
-
-	 sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-
-	 guard
-	    let temperatura = temperatureField.text, !temperatura.isEmpty,
-	    let pressioneMin = minPressureField.text, !pressioneMin.isEmpty,
-	    let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty,
-		let glicemia = glycemiaField.text, !glicemia.isEmpty,
-		let battito = heartRateField.text, !battito.isEmpty
-	else {
-	    self.okButton.isEnabled = false
-	    return
+		
+		sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+		var count = 0
+		if let temperatura = temperatureField.text, !temperatura.isEmpty { count += 1 }
+		if let pressioneMin = minPressureField.text, !pressioneMin.isEmpty { count += 1 }
+		if let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty { count += 1 }
+		if let glicemia = glycemiaField.text, !glicemia.isEmpty { count += 1 }
+		if let battito = heartRateField.text, !battito.isEmpty { count += 1 }
+		
+		if count >= 2 {
+			self.okButton.isEnabled = true
+		} else {
+			self.okButton.isEnabled = false
+			return
 		}
-	 // enable okButton if all conditions are met
-	 okButton.isEnabled = true
+		// enable okButton if all conditions are met
+		okButton.isEnabled = true
 	}
     
     // cliccando su ok viene creato l'oggetto report
@@ -75,22 +77,29 @@ class FormViewController: UIViewController {
         report.data = dataIns! // controllo se arrivo da notifiche
         
 		let itLocale = Locale(identifier: "it_IT")
-		report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+		if !temperatureField.text!.isEmpty{
+			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+		}
                  
-        let pressioneMin = Int16(minPressureField.text!)
-		report.pressioneMin = pressioneMin!
-         
+		if !minPressureField.text!.isEmpty {
+			report.pressioneMin = Int16(minPressureField.text!)!
+		}
+		
+		if !maxPressureField.text!.isEmpty {
+			report.pressioneMax = Int16(maxPressureField.text!)!
+		}
+		
+		if !glycemiaField.text!.isEmpty {
+			report.glicemia = Int16(glycemiaField.text!)!
+		}
         
-        let pressioneMax = Int16(maxPressureField.text!)
-		report.pressioneMax = pressioneMax!
-        
-        let glicemia = Int16(glycemiaField.text!)
-		report.glicemia = glicemia!
-        
-        let battito = Int16(heartRateField.text!)
-		report.battito = battito!
-        
-        report.note = notesField.text
+		if !heartRateField.text!.isEmpty {
+			report.battito = Int16(heartRateField.text!)!
+		}
+		
+		if !notesField.text!.isEmpty {
+			report.note = notesField.text
+		}
         
 		resetLabels()
         
