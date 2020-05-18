@@ -81,27 +81,37 @@ class FormViewController: UIViewController {
 		if !minPressureField.text!.isEmpty {
 			report.pressioneMin = Int16(minPressureField.text!)!
 			priorita = 1
+		} else {
+			report.pressioneMin = 0
 		}
 		
 		if !maxPressureField.text!.isEmpty {
 			report.pressioneMax = Int16(maxPressureField.text!)!
 			priorita = 1
+		} else {
+			report.pressioneMax = 0
 		}
 		
 		if !heartRateField.text!.isEmpty {
 			report.battito = Int16(heartRateField.text!)!
 			priorita = 3
+		} else {
+			report.battito = 0
 		}
 		
 		let itLocale = Locale(identifier: "it_IT")
 		if !temperatureField.text!.isEmpty{
 			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
 			priorita = 4
+		} else {
+			report.temperatura = 0
 		}
 		
 		if !glycemiaField.text!.isEmpty {
 			report.glicemia = Int16(glycemiaField.text!)!
 			priorita = 5
+		} else {
+			report.glicemia = 0
 		}
 		
 		if !notesField.text!.isEmpty {
@@ -145,7 +155,7 @@ class FormViewController: UIViewController {
 				let soglia = defaults.integer(forKey: "soglia")
 				var body = ""
 			
-			if today == giornoScadenza {
+			if today >= giornoScadenza {
 				switch parametro {
 					
 				case 0: // temperatura

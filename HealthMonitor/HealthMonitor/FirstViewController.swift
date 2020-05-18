@@ -108,6 +108,11 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 		let action = UIContextualAction(style: .destructive, title: "Elimina") { (action, view, completion) in
 			// eliminazione dal database
 			self.context.delete(self.dailyReports![indexPath.row])
+			do {
+				try self.context.save()
+			} catch {
+				fatalError("Errore nel salvataggio dopo l'eliminazione: \(error)")
+			}
 			// eliminazione dal vettore
 			self.dailyReports?.remove(at: indexPath.row)
 			// eliminazione dalla tabella
