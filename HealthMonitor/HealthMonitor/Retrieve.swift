@@ -46,6 +46,13 @@ class Retrieve {
         return try? context.fetch(request)
     }
     
+    // ritorna tutti i report con una data priorità
+    func findReportsByPriority(matching priorita:Int) -> [Report]? {
+        let reports = findReports()
+        let filtered = reports?.filter{$0.priorita == priorita}
+        return filtered
+    }
+    
     //funzione che ritorna la media degli ultimi x giorni di un dato parametro
     func media(parametro: Int) -> Any? {
         let result: Any?
@@ -82,7 +89,7 @@ class Retrieve {
         return result
     }
     
-    func mediaTemperatura(reports: [Report]) -> Decimal {
+    func mediaTemperatura(reports: [Report]) -> Decimal? {
         var count = 0
         var temperatura : Decimal = 0
         for report in reports {
@@ -91,29 +98,29 @@ class Retrieve {
                 count += 1
             }
         }
-        return temperatura / Decimal(count)
+        return (count > 0) ? temperatura / Decimal(count) : nil
     }
     
     // conto quante volte è stata inseita la glicemia (cioè quante volte è > 0)
-    func mediaGlicemia(reports: [Report]) -> Int {
+    func mediaGlicemia(reports: [Report]) -> Int? {
         //let glicemia = (reports?.filter{$0.glicemia > 0}.reduce(0, {$0 + $1.glicemia}))! / countGlicemia
         let count = Int16(reports.filter({ $0.glicemia > 0 }).count)
-        return Int((reports.reduce(0, {$0 + $1.glicemia})) / count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.glicemia})) / count) : nil
     }
     
-    func mediaPressioneMin(reports: [Report]) -> Int {
+    func mediaPressioneMin(reports: [Report]) -> Int? {
         let count = Int16(reports.filter({ $0.pressioneMin > 0 }).count)
-        return Int((reports.reduce(0, {$0 + $1.pressioneMin})) / count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.pressioneMin})) / count) : nil
     }
     
-    func mediaPressioneMax(reports: [Report]) -> Int {
+    func mediaPressioneMax(reports: [Report]) -> Int? {
         let count = Int16(reports.filter({ $0.pressioneMax > 0 }).count)
-        return Int((reports.reduce(0, {$0 + $1.pressioneMax})) / count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.pressioneMax})) / count) : nil
     }
     
-    func mediaBattito(reports: [Report]) -> Int {
+    func mediaBattito(reports: [Report]) -> Int? {
         let count = Int16(reports.filter({ $0.battito > 0 }).count)
-        return Int((reports.reduce(0, {$0 + $1.battito})) / count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.battito})) / count) : nil
     }
     
 }

@@ -16,27 +16,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priorità:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-ow-xw4">
-                                <rect key="frame" x="20" y="100" width="67" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="20" y="100" width="73.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsq-Uz-vA4">
-                                <rect key="frame" x="126" y="62" width="222" height="132"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsq-Uz-vA4" customClass="F">
+                                <rect key="frame" x="133" y="62" width="222" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="BFE-NA-P6a"/>
                                 </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3L0-kZ-ZIU">
-                                <rect key="frame" x="428" y="62" width="320" height="132"/>
+                                <rect key="frame" x="434.5" y="62" width="313.5" height="132"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">La priorità di un report è determinata dalla media delle priorità dei parametri che contiene. Di seguito si riportano le priorità dei parametri: Temperatura -&gt; 4 Pressione minima -&gt; 1 Pressione massima -&gt; 1 Glicemia -&gt; 4 Battito -&gt; 3</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <string key="text">La priorità di un report è determinata dalla priorità del parametro più importante. Le priorità dei singoli parametri sono: Pressione minima -&gt; 1 Pressione massima -&gt; 1 Battito -&gt; 3 Temperatura -&gt; 4 Glicemia -&gt; 5</string>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ7-mc-ygU" userLabel="infoButton">
-                                <rect key="frame" x="383" y="100" width="20" height="22"/>
+                                <rect key="frame" x="389.5" y="100" width="20" height="22"/>
                                 <state key="normal" image="questionmark.circle" catalog="system"/>
                                 <connections>
                                     <action selector="tapInfo:" destination="fnL-7p-rbW" eventType="touchUpInside" id="ybp-ee-7HY"/>
@@ -242,6 +242,7 @@
                     <connections>
                         <outlet property="infoTextArea" destination="3L0-kZ-ZIU" id="hKq-aV-A5L"/>
                         <outlet property="priorityPicker" destination="Dsq-Uz-vA4" id="cHX-a0-slI"/>
+                        <outlet property="tableView" destination="1Nn-JT-p9v" id="qGk-Zv-ruU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYB-bl-iap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

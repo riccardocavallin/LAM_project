@@ -52,14 +52,17 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     // numero di righe
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
+    
     // titolo della riga
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
+    
     // azioni da fare quando viene selazionato un elemento
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         defaults.set(true, forKey: "clicked")

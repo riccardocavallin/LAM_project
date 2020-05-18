@@ -72,34 +72,44 @@ class FormViewController: UIViewController {
 			data = Date()
 		}
 		
+		var priorita = 0
+		
 		// estraggo solo il giorno, mese, anno
 		let dataIns = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: data!))
         report.data = dataIns! // controllo se arrivo da notifiche
         
-		let itLocale = Locale(identifier: "it_IT")
-		if !temperatureField.text!.isEmpty{
-			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
-		}
-                 
 		if !minPressureField.text!.isEmpty {
 			report.pressioneMin = Int16(minPressureField.text!)!
+			priorita = 1
 		}
 		
 		if !maxPressureField.text!.isEmpty {
 			report.pressioneMax = Int16(maxPressureField.text!)!
+			priorita = 1
+		}
+		
+		if !heartRateField.text!.isEmpty {
+			report.battito = Int16(heartRateField.text!)!
+			priorita = 3
+		}
+		
+		let itLocale = Locale(identifier: "it_IT")
+		if !temperatureField.text!.isEmpty{
+			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
+			priorita = 4
 		}
 		
 		if !glycemiaField.text!.isEmpty {
 			report.glicemia = Int16(glycemiaField.text!)!
-		}
-        
-		if !heartRateField.text!.isEmpty {
-			report.battito = Int16(heartRateField.text!)!
+			priorita = 5
 		}
 		
 		if !notesField.text!.isEmpty {
 			report.note = notesField.text
 		}
+		
+		// salvo priorità
+		report.priorita = Int16(priorita)
         
 		resetLabels()
         

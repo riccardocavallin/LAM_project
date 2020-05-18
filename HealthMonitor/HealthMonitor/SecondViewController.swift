@@ -28,9 +28,9 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         if let dailyReports = model.findLastWeekReports() {
-            // recupero tutte le temperature e i parametri glicemia con il metodo map
-            temperature = dailyReports.map{$0.temperatura!}
-            glicemia = dailyReports.map{$0.glicemia}
+            // recupero tutte le temperature e i parametri glicemia con il metodo map e le filtro
+            temperature = dailyReports.map{$0.temperatura!}.filter{$0 != 0}
+            glicemia = dailyReports.map{$0.glicemia}.filter{$0 != 0}
             
             createTempChart()
             createGlycemChart()

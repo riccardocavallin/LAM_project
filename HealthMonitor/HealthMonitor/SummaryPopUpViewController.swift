@@ -38,15 +38,21 @@ class SummaryPopUpViewController: UIViewController {
         let data = formatter.string(from: reports![0].data!)
         reportLabel.text = "Valori medi del giorno " + data
         
-        temperatureLabel.text = "\(model.mediaTemperatura(reports: reports!))"
+        let temperatura = model.mediaTemperatura(reports: reports!)
+        temperatureLabel.text = (temperatura != nil) ? "\(temperatura!)" : "N/A"
         
-        glycemiaLabel.text = "\(model.mediaGlicemia(reports: reports!))"
+        let glicemia = model.mediaGlicemia(reports: reports!)
+        glycemiaLabel.text = (glicemia != nil) ? "\(glicemia!)" : "N/A"
         
-        pMinLabel.text = "\(model.mediaPressioneMin(reports: reports!))"
+        let pMin = model.mediaPressioneMin(reports: reports!)
+        pMinLabel.text = (pMin != nil) ? "\(pMin!)" : "N/A"
         
-        pMaxLabel.text = "\(model.mediaPressioneMax(reports: reports!))"
+        let pMax = model.mediaPressioneMax(reports: reports!)
+        pMaxLabel.text = (pMax != nil) ? "\(pMax!)" : "N/A"
         
-        heartRateLabel.text = "\(model.mediaBattito(reports: reports!))"
+        let battito = model.mediaBattito(reports: reports!)
+        heartRateLabel.text = (battito != nil) ? "\(battito!)" : "N/A"
+
     }
 
 }
