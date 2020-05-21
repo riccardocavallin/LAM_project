@@ -57,22 +57,22 @@ class EditFormViewController: UIViewController {
     }
     
     private func setPlaceholders() {
-        if let _ = report?.temperatura  {
+        if let _ = report?.temperatura, Int(truncating: report!.temperatura!) > 0  {
             temperatureField.text = "\(report!.temperatura!)"
         }
-        if let _ = report?.pressioneMin  {
+        if let _ = report?.pressioneMin, report!.pressioneMin > 0 {
             minPressureField.text = "\(report!.pressioneMin)"
         }
-        if let _ = report?.pressioneMax {
+        if let _ = report?.pressioneMax, report!.pressioneMax > 0 {
            maxPressureField.text = "\(report!.pressioneMax)"
         }
-        if let _ = report?.glicemia {
+        if let _ = report?.glicemia, report!.glicemia > 0{
            glycemiaField.text = "\(report!.glicemia)"
         }
-        if let _ = report?.battito {
+        if let _ = report?.battito, report!.battito > 0 {
             heartRateField.text = "\(report!.battito)"
         }
-        if let _ = report?.note {
+        if let _ = report?.note, !report!.note!.isEmpty {
            notesField.text = "\(report!.note!)"
         }
         

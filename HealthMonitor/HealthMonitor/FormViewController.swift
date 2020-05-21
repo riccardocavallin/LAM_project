@@ -77,7 +77,10 @@ class FormViewController: UIViewController {
 		// estraggo solo il giorno, mese, anno
 		let dataIns = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: data!))
         report.data = dataIns! // controllo se arrivo da notifiche
-        
+		
+		
+        print("minPressureField: \(minPressureField.text!)")
+		
 		if !minPressureField.text!.isEmpty {
 			report.pressioneMin = Int16(minPressureField.text!)!
 			priorita = 1
@@ -85,6 +88,7 @@ class FormViewController: UIViewController {
 			report.pressioneMin = 0
 		}
 		
+		print("maxPressureField: \(maxPressureField.text!)")
 		if !maxPressureField.text!.isEmpty {
 			report.pressioneMax = Int16(maxPressureField.text!)!
 			priorita = 1
@@ -92,6 +96,7 @@ class FormViewController: UIViewController {
 			report.pressioneMax = 0
 		}
 		
+		print("heartRateField: \(heartRateField.text!)")
 		if !heartRateField.text!.isEmpty {
 			report.battito = Int16(heartRateField.text!)!
 			priorita = 3
@@ -99,6 +104,7 @@ class FormViewController: UIViewController {
 			report.battito = 0
 		}
 		
+		print("temperatureField: \(temperatureField.text!)")
 		let itLocale = Locale(identifier: "it_IT")
 		if !temperatureField.text!.isEmpty{
 			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
@@ -107,6 +113,7 @@ class FormViewController: UIViewController {
 			report.temperatura = 0
 		}
 		
+		print("glycemiaField: \(glycemiaField.text!)")
 		if !glycemiaField.text!.isEmpty {
 			report.glicemia = Int16(glycemiaField.text!)!
 			priorita = 5
@@ -114,6 +121,7 @@ class FormViewController: UIViewController {
 			report.glicemia = 0
 		}
 		
+		print("notesField: \(notesField.text!)")
 		if !notesField.text!.isEmpty {
 			report.note = notesField.text
 		}
