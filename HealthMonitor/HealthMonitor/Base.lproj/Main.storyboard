@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsq-Uz-vA4" customClass="F">
-                                <rect key="frame" x="133" y="62" width="222" height="132"/>
+                                <rect key="frame" x="132.5" y="62" width="222" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="BFE-NA-P6a"/>
                                 </constraints>
@@ -42,25 +42,29 @@
                                     <action selector="tapInfo:" destination="fnL-7p-rbW" eventType="touchUpInside" id="ybp-ee-7HY"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-JT-p9v">
-                                <rect key="frame" x="20" y="209" width="728" height="755"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-JT-p9v">
+                                <rect key="frame" x="20" y="202" width="728" height="755"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="2wH-Vd-QLi" customClass="ReportTableViewCell" customModule="HealthMonitor" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="2wH-Vd-QLi" customClass="ReportCellWithDate" customModule="HealthMonitor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2wH-Vd-QLi" id="20J-7e-qio">
                                             <rect key="frame" x="0.0" y="0.0" width="728" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJG-UD-Soe" userLabel="index">
-                                                    <rect key="frame" x="15" y="38" width="4.5" height="24"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJG-UD-Soe" userLabel="dateLabel">
+                                                    <rect key="frame" x="15" y="25" width="70" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="eEl-zE-EBR"/>
+                                                        <constraint firstAttribute="height" constant="50" id="uQa-uZ-ytC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gE2-NI-VXb" userLabel="TemperaturaStack">
-                                                    <rect key="frame" x="75" y="21" width="166" height="20.5"/>
+                                                    <rect key="frame" x="115" y="21" width="166" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTR-zx-fJd">
                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="20.5"/>
@@ -80,7 +84,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-xC-cNM" userLabel="GlicemiaStack">
-                                                    <rect key="frame" x="75" y="58.5" width="109" height="20.5"/>
+                                                    <rect key="frame" x="115" y="58.5" width="109" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3f-iu-yVF">
                                                             <rect key="frame" x="0.0" y="0.0" width="70.5" height="20.5"/>
@@ -97,7 +101,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uyX-tI-NwM" userLabel="PresMinStack">
-                                                    <rect key="frame" x="261" y="21" width="203" height="20.5"/>
+                                                    <rect key="frame" x="301" y="21" width="203" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-MK-jb9">
                                                             <rect key="frame" x="0.0" y="0.0" width="139" height="20.5"/>
@@ -117,7 +121,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bbe-jy-9bD" userLabel="PersMaxStack">
-                                                    <rect key="frame" x="261" y="58.5" width="215.5" height="20.5"/>
+                                                    <rect key="frame" x="301" y="58.5" width="215.5" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhQ-27-esC">
                                                             <rect key="frame" x="0.0" y="0.0" width="151.5" height="20.5"/>
@@ -137,7 +141,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-6O-2sV" userLabel="BattitoStack">
-                                                    <rect key="frame" x="494" y="21" width="124" height="20.5"/>
+                                                    <rect key="frame" x="534" y="21" width="124" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8va-MN-TNo">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
@@ -160,7 +164,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GWJ-Xp-xZV" userLabel="NoteStack">
-                                                    <rect key="frame" x="494" y="58.5" width="250" height="20.5"/>
+                                                    <rect key="frame" x="534" y="58.5" width="200" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV8-ri-EfQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
@@ -172,45 +176,42 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lW-sH-dGs" userLabel="noteIns">
-                                                            <rect key="frame" x="70" y="0.0" width="180" height="20.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="180" id="Lw3-OB-LFW"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="70" y="0.0" width="130" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="Xpz-dN-QY4"/>
+                                                        <constraint firstAttribute="width" constant="200" id="Xpz-dN-QY4"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mlX-6O-2sV" firstAttribute="top" secondItem="20J-7e-qio" secondAttribute="topMargin" constant="10" id="4cn-Mg-hU9"/>
                                                 <constraint firstItem="CJG-UD-Soe" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" id="4xB-F1-5rV"/>
-                                                <constraint firstItem="gE2-NI-VXb" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="60" id="Ba7-2G-EdZ"/>
+                                                <constraint firstItem="gE2-NI-VXb" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="100" id="Ba7-2G-EdZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3mH-xC-cNM" secondAttribute="bottom" constant="10" id="JtC-RT-Ojm"/>
-                                                <constraint firstItem="3mH-xC-cNM" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="60" id="R2O-Ze-Sls"/>
+                                                <constraint firstItem="3mH-xC-cNM" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="100" id="R2O-Ze-Sls"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Bbe-jy-9bD" secondAttribute="bottom" constant="10" id="URa-5e-NUa"/>
-                                                <constraint firstItem="mlX-6O-2sV" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="479" id="UVl-ZP-Usf"/>
+                                                <constraint firstItem="mlX-6O-2sV" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="519" id="UVl-ZP-Usf"/>
                                                 <constraint firstItem="CJG-UD-Soe" firstAttribute="centerY" secondItem="20J-7e-qio" secondAttribute="centerY" id="WiT-m3-s5s"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="GWJ-Xp-xZV" secondAttribute="bottom" constant="10" id="eE0-4F-0Ad"/>
-                                                <constraint firstItem="uyX-tI-NwM" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="246" id="i2z-LZ-wPt"/>
-                                                <constraint firstItem="GWJ-Xp-xZV" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="479" id="k2t-8N-fPG"/>
+                                                <constraint firstItem="uyX-tI-NwM" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="286" id="i2z-LZ-wPt"/>
+                                                <constraint firstItem="GWJ-Xp-xZV" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="519" id="k2t-8N-fPG"/>
                                                 <constraint firstItem="gE2-NI-VXb" firstAttribute="top" secondItem="20J-7e-qio" secondAttribute="topMargin" constant="10" id="sg0-Vg-zaE"/>
                                                 <constraint firstItem="uyX-tI-NwM" firstAttribute="top" secondItem="20J-7e-qio" secondAttribute="topMargin" constant="10" id="uwZ-k6-MTD"/>
-                                                <constraint firstItem="Bbe-jy-9bD" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="246" id="yVu-u3-dEl"/>
+                                                <constraint firstItem="Bbe-jy-9bD" firstAttribute="leading" secondItem="20J-7e-qio" secondAttribute="leadingMargin" constant="286" id="yVu-u3-dEl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="battitoInsLabel" destination="8d0-Os-fzY" id="Ejq-jg-7YC"/>
-                                            <outlet property="glicInsLabel" destination="cCb-Sx-Vmh" id="ezr-nV-eqo"/>
-                                            <outlet property="indexLabel" destination="CJG-UD-Soe" id="2oe-h4-Fr4"/>
-                                            <outlet property="noteInsLabel" destination="6lW-sH-dGs" id="0z3-tH-VDt"/>
-                                            <outlet property="pMaxInsLabel" destination="gel-C4-Mhv" id="aQ5-BR-c0Q"/>
-                                            <outlet property="pMinInsLabel" destination="qYn-Yd-4Us" id="e9L-8H-1aV"/>
-                                            <outlet property="tempInsLabel" destination="DKB-7W-JPQ" id="I6W-cG-dnZ"/>
+                                            <outlet property="battitoInsLabel" destination="8d0-Os-fzY" id="oip-SP-hhJ"/>
+                                            <outlet property="dateLabel" destination="CJG-UD-Soe" id="V56-oA-STq"/>
+                                            <outlet property="glicInsLabel" destination="cCb-Sx-Vmh" id="n8s-ox-0Rf"/>
+                                            <outlet property="noteInsLabel" destination="6lW-sH-dGs" id="QKf-Sd-2vF"/>
+                                            <outlet property="pMaxInsLabel" destination="gel-C4-Mhv" id="31J-sy-XAh"/>
+                                            <outlet property="pMinInsLabel" destination="qYn-Yd-4Us" id="wG9-l9-OCQ"/>
+                                            <outlet property="tempInsLabel" destination="DKB-7W-JPQ" id="jdy-OF-MlR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
