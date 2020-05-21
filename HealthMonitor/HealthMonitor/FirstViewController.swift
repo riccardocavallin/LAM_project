@@ -105,15 +105,9 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     }
 	
 	func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath) as! ReportTableViewCell
 		let action = UIContextualAction(style: .destructive, title: "Elimina") { (action, view, completion) in
 			// eliminazione dal database
 			self.context.delete(self.dailyReports![indexPath.row])
-			do {
-				try self.context.save()
-			} catch {
-				fatalError("Errore nel salvataggio dopo l'eliminazione: \(error)")
-			}
 			// eliminazione dal vettore
 			self.dailyReports?.remove(at: indexPath.row)
 			// eliminazione dalla tabella
@@ -155,60 +149,56 @@ class ReportTableViewCell: UITableViewCell {
 	func setReport(index: Int, report: Report) {
 		// vengono visualizzato solo i parametri diversi da 0
 		indexLabel.text = "\(index)"
-		
-		print("report.temperatura: \(String(describing: report.temperatura))")
-		if report.temperatura != 0 {
+
+		if report.temperatura != nil && report.temperatura != 0 {
 			tempInsLabel.text = "\(report.temperatura!)"
 			tempInsLabel.textColor = .yellow
+		} else {
+			tempInsLabel.text = "N/A"
+			tempInsLabel.textColor = .darkGray
 		}
 		
-		print("report.pressioneMin: \(report.pressioneMin)")
-		if report.pressioneMin > 0 {
+		if report.pressioneMin != 0 {
 			pMinInsLabel.text = "\(report.pressioneMin)"
 			pMinInsLabel.textColor = .yellow
+		} else {
+			pMinInsLabel.text = "N/A"
+			pMinInsLabel.textColor = .darkGray
 		}
-		
-		print("report.pressioneMax: \(report.pressioneMax)")
-		if report.pressioneMax > 0 {
+
+		if report.pressioneMax != 0 {
 			pMaxInsLabel.text = "\(report.pressioneMax)"
 			pMaxInsLabel.textColor = .yellow
+		} else {
+			pMaxInsLabel.text = "N/A"
+			pMaxInsLabel.textColor = .darkGray
 		}
-		
-		print("report.glicemia: \(report.glicemia)")
-		if report.glicemia > 0 {
+
+		if report.glicemia != 0 {
 			glicInsLabel.text = "\(report.glicemia)"
 			glicInsLabel.textColor = .yellow
+		} else {
+			glicInsLabel.text = "N/A"
+			glicInsLabel.textColor = .darkGray
 		}
-		
-		print("report.battito: \(report.battito)")
-		if report.battito > 0 {
+
+		if report.battito != 0 {
 			battitoInsLabel.text = "\(report.battito)"
 			battitoInsLabel.textColor = .yellow
+		} else {
+			battitoInsLabel.text = "N/A"
+			battitoInsLabel.textColor = .darkGray
 		}
-		
-		print("report.note: \(String(describing: report.note))")
-		if report.note != nil {
+
+		if report.note != nil && !report.note!.isEmpty{
 			noteInsLabel.text = "\(String(describing: report.note!))"
 			noteInsLabel.textColor = .yellow
+		} else {
+			noteInsLabel.text = "N/A"
+			noteInsLabel.textColor = .darkGray
 		}
-		
+
 	}
-	
-//	func resetCell(index: Int) {
-//		tempInsLabel.text = "N/A"
-//		tempInsLabel.textColor = .darkGray
-//		pMinInsLabel.text = "N/A"
-//		pMinInsLabel.textColor = .darkGray
-//		pMaxInsLabel.text = "N/A"
-//		pMaxInsLabel.textColor = .darkGray
-//		glicInsLabel.text = "N/A"
-//		glicInsLabel.textColor = .darkGray
-//		battitoInsLabel.text = "N/A"
-//		battitoInsLabel.textColor = .darkGray
-//		noteInsLabel.text = "N/A"
-//		noteInsLabel.textColor = .darkGray
-//	}
-	
 	
 }
 
