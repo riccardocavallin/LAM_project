@@ -22,14 +22,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsq-Uz-vA4" customClass="F">
-                                <rect key="frame" x="132.5" y="62" width="222" height="132"/>
+                                <rect key="frame" x="132.5" y="62" width="222" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="BFE-NA-P6a"/>
+                                    <constraint firstAttribute="height" constant="125" id="bld-fd-mse"/>
                                 </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3L0-kZ-ZIU">
                                 <rect key="frame" x="434.5" y="62" width="313.5" height="132"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="nwL-dx-ezH"/>
+                                </constraints>
                                 <string key="text">La priorità di un report è determinata dalla priorità del parametro più importante. Le priorità dei singoli parametri sono: Pressione minima -&gt; 1 Pressione massima -&gt; 1 Battito -&gt; 3 Temperatura -&gt; 4 Glicemia -&gt; 5</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -42,8 +46,8 @@
                                     <action selector="tapInfo:" destination="fnL-7p-rbW" eventType="touchUpInside" id="ybp-ee-7HY"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-JT-p9v">
-                                <rect key="frame" x="20" y="202" width="728" height="755"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-JT-p9v">
+                                <rect key="frame" x="20" y="202" width="728" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="2wH-Vd-QLi" customClass="ReportCellWithDate" customModule="HealthMonitor" customModuleProvider="target">
@@ -219,21 +223,19 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="jTH-xz-005" firstAttribute="bottom" secondItem="3L0-kZ-ZIU" secondAttribute="bottom" constant="780" id="11l-zh-Kjp"/>
                             <constraint firstItem="tB4-ow-xw4" firstAttribute="top" secondItem="jTH-xz-005" secondAttribute="top" constant="50" id="1OS-WL-St1"/>
                             <constraint firstItem="1Nn-JT-p9v" firstAttribute="leading" secondItem="jTH-xz-005" secondAttribute="leading" constant="20" id="3mr-bh-wbj"/>
                             <constraint firstItem="Dsq-Uz-vA4" firstAttribute="top" secondItem="jTH-xz-005" secondAttribute="top" constant="12" id="4Pq-8G-xwK"/>
                             <constraint firstItem="jTH-xz-005" firstAttribute="trailing" secondItem="1Nn-JT-p9v" secondAttribute="trailing" constant="20" id="5L9-9C-cBL"/>
                             <constraint firstItem="qQ7-mc-ygU" firstAttribute="top" secondItem="jTH-xz-005" secondAttribute="top" constant="50" id="8Te-p7-h8b"/>
-                            <constraint firstItem="jTH-xz-005" firstAttribute="bottom" secondItem="Dsq-Uz-vA4" secondAttribute="bottom" constant="780" id="D4R-94-bs5"/>
                             <constraint firstItem="3L0-kZ-ZIU" firstAttribute="leading" secondItem="qQ7-mc-ygU" secondAttribute="trailing" constant="25" id="HRA-1w-2WX"/>
                             <constraint firstItem="3L0-kZ-ZIU" firstAttribute="trailing" secondItem="Po5-wo-WIv" secondAttribute="trailingMargin" id="J3d-L8-n78"/>
                             <constraint firstItem="qQ7-mc-ygU" firstAttribute="leading" secondItem="Dsq-Uz-vA4" secondAttribute="trailing" constant="35" id="Z9b-NQ-eRH"/>
                             <constraint firstItem="jTH-xz-005" firstAttribute="trailing" secondItem="3L0-kZ-ZIU" secondAttribute="trailing" constant="20" id="bvS-1B-dNn"/>
                             <constraint firstItem="Dsq-Uz-vA4" firstAttribute="leading" secondItem="tB4-ow-xw4" secondAttribute="trailing" constant="39" id="ehg-7i-4v0"/>
                             <constraint firstItem="3L0-kZ-ZIU" firstAttribute="top" secondItem="jTH-xz-005" secondAttribute="top" constant="12" id="jBV-UI-vw8"/>
+                            <constraint firstItem="1Nn-JT-p9v" firstAttribute="top" secondItem="3L0-kZ-ZIU" secondAttribute="bottom" constant="8" id="kYR-hu-kWn"/>
                             <constraint firstItem="jTH-xz-005" firstAttribute="bottom" secondItem="1Nn-JT-p9v" secondAttribute="bottom" constant="10" id="mtR-pK-7I1"/>
-                            <constraint firstItem="1Nn-JT-p9v" firstAttribute="top" secondItem="Dsq-Uz-vA4" secondAttribute="bottom" constant="15" id="n9Z-cz-Xcw"/>
                             <constraint firstItem="3L0-kZ-ZIU" firstAttribute="top" secondItem="Dsq-Uz-vA4" secondAttribute="top" id="q6I-xD-rXu"/>
                             <constraint firstItem="tB4-ow-xw4" firstAttribute="leading" secondItem="jTH-xz-005" secondAttribute="leading" constant="20" id="zwH-Ry-U3g"/>
                         </constraints>
