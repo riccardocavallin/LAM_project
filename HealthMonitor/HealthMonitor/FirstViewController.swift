@@ -38,9 +38,6 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
 	
 	// cliccando sul giorno salva la data corrispondente e aggiorna i report visualizzati
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //let formatter = DateFormatter()
-        //formatter.dateFormat = "dd-MM-YYYY"
-        //data = formatter.string(from:date)
 		data = date
 		// il bottone per agguingere report non viene mostrato per le date future
 		if (data! < Date()) {
@@ -150,19 +147,58 @@ class ReportTableViewCell: UITableViewCell {
 	
 	
 	func setReport(index: Int, report: Report) {
+		// vengono visualizzato solo i parametri diversi da 0
 		indexLabel.text = "\(index)"
-		if tempInsLabel.text != nil {
+
+		if report.temperatura != nil && report.temperatura != 0 {
 			tempInsLabel.text = "\(report.temperatura!)"
+			tempInsLabel.textColor = .yellow
+		} else {
+			tempInsLabel.text = "N/A"
+			tempInsLabel.textColor = .darkGray
 		}
-		pMinInsLabel.text = "\(report.pressioneMin)"
-		pMaxInsLabel.text = "\(report.pressioneMax)"
-		glicInsLabel.text = "\(report.glicemia)"
-		battitoInsLabel.text = "\(report.battito)"
-		noteInsLabel.text = "\(report.note!)"
 		
-		
+		if report.pressioneMin != 0 {
+			pMinInsLabel.text = "\(report.pressioneMin)"
+			pMinInsLabel.textColor = .yellow
+		} else {
+			pMinInsLabel.text = "N/A"
+			pMinInsLabel.textColor = .darkGray
+		}
+
+		if report.pressioneMax != 0 {
+			pMaxInsLabel.text = "\(report.pressioneMax)"
+			pMaxInsLabel.textColor = .yellow
+		} else {
+			pMaxInsLabel.text = "N/A"
+			pMaxInsLabel.textColor = .darkGray
+		}
+
+		if report.glicemia != 0 {
+			glicInsLabel.text = "\(report.glicemia)"
+			glicInsLabel.textColor = .yellow
+		} else {
+			glicInsLabel.text = "N/A"
+			glicInsLabel.textColor = .darkGray
+		}
+
+		if report.battito != 0 {
+			battitoInsLabel.text = "\(report.battito)"
+			battitoInsLabel.textColor = .yellow
+		} else {
+			battitoInsLabel.text = "N/A"
+			battitoInsLabel.textColor = .darkGray
+		}
+
+		if report.note != nil && !report.note!.isEmpty{
+			noteInsLabel.text = "\(String(describing: report.note!))"
+			noteInsLabel.textColor = .yellow
+		} else {
+			noteInsLabel.text = "N/A"
+			noteInsLabel.textColor = .darkGray
+		}
+
 	}
-	
 	
 }
 

@@ -46,6 +46,13 @@ class Retrieve {
         return try? context.fetch(request)
     }
     
+    // ritorna tutti i report con una data priorità
+    func findReportsByPriority(matching priorita:Int) -> [Report]? {
+        let reports = findReports()
+        let filtered = reports?.filter{$0.priorita == priorita}
+        return filtered
+    }
+    
     //funzione che ritorna la media degli ultimi x giorni di un dato parametro
     func media(parametro: Int) -> Any? {
         let result: Any?
@@ -54,41 +61,66 @@ class Retrieve {
         let scadenza = defaults.object(forKey: "scadenza") as! Date
         let parametro = defaults.integer(forKey: "parametro")
         var dateComponent = DateComponents()
-        dateComponent.day = -5//-durata
+        dateComponent.day = -durata
         // la data di partenza è la scadenza (oggi) - la durata
         let partenza = Calendar.current.date(byAdding: dateComponent, to: scadenza)
         // estraggo tutti i report dell'ultima settimana
         let request: NSFetchRequest<Report> = Report.fetchRequest()
         request.predicate = NSPredicate(format: "data > %@ AND data < %@", partenza! as NSDate, scadenza as NSDate)
         let reports = try! context.fetch(request)
+        
         // calcolo la media adeguata in base al parametro da monitorare
-        print("Numero di reports: \(reports.count)")
-        print("partenza: \(String(describing: partenza))")
-        print("scadenza: \(scadenza)")
         switch parametro {
         case 0:
-            var temperatura : Decimal = 0
-            for report in reports {
-                temperatura = (report.temperatura! as Decimal) + temperatura
-            }
-            result = (temperatura / (Decimal(reports.count)))
+            result = mediaTemperatura(reports: reports)
         case 1:
-            let pressioneMin = (reports.reduce(0, {$0 + $1.pressioneMin})) / Int16(reports.count)
-            result =  pressioneMin
+            result =  mediaPressioneMin(reports: reports)
         case 2:
-            let pressioneMax = (reports.reduce(0, {$0 + $1.pressioneMax})) / Int16(reports.count)
-            result = pressioneMax
+            result = mediaPressioneMax(reports: reports)
         case 3:
-            let glicemia = (reports.reduce(0, {$0 + $1.glicemia})) / Int16(reports.count)
-            result = glicemia
+            result = mediaGlicemia(reports: reports)
         case 4:
-            let battito = (reports.reduce(0, {$0 + $1.battito})) / Int16(reports.count)
-            result = battito
+            result = mediaBattito(reports: reports)
         default:
             print("default case")
             result = nil
         }
+        
         return result
+    }
+    
+    func mediaTemperatura(reports: [Report]) -> Decimal? {
+        var count = 0
+        var temperatura : Decimal = 0
+        for report in reports {
+            if (report.temperatura! as Decimal) != 0 {
+                temperatura = (report.temperatura! as Decimal) + temperatura
+                count += 1
+            }
+        }
+        return (count > 0) ? temperatura / Decimal(count) : nil
+    }
+    
+    // conto quante volte è stata inseita la glicemia (cioè quante volte è > 0)
+    func mediaGlicemia(reports: [Report]) -> Int? {
+        //let glicemia = (reports?.filter{$0.glicemia > 0}.reduce(0, {$0 + $1.glicemia}))! / countGlicemia
+        let count = Int16(reports.filter({ $0.glicemia > 0 }).count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.glicemia})) / count) : nil
+    }
+    
+    func mediaPressioneMin(reports: [Report]) -> Int? {
+        let count = Int16(reports.filter({ $0.pressioneMin > 0 }).count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.pressioneMin})) / count) : nil
+    }
+    
+    func mediaPressioneMax(reports: [Report]) -> Int? {
+        let count = Int16(reports.filter({ $0.pressioneMax > 0 }).count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.pressioneMax})) / count) : nil
+    }
+    
+    func mediaBattito(reports: [Report]) -> Int? {
+        let count = Int16(reports.filter({ $0.battito > 0 }).count)
+        return (count > 0) ? Int((reports.reduce(0, {$0 + $1.battito})) / count) : nil
     }
     
 }

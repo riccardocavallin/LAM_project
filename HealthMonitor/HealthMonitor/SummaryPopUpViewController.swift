@@ -20,6 +20,7 @@ class SummaryPopUpViewController: UIViewController {
     
     var reports: [Report]?
     lazy var temperatura : Decimal = 0
+    let model = Retrieve()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +32,27 @@ class SummaryPopUpViewController: UIViewController {
     }
     
     func setLabels() {
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-YYYY"
         let data = formatter.string(from: reports![0].data!)
-        reportLabel.text = "Giorno " + data
-        for report in reports! {
-            temperatura = (report.temperatura! as Decimal) + temperatura
-        }
-        temperatureLabel.text = "\(temperatura / (Decimal(reports!.count)))"
-        let glicemia = (reports?.reduce(0, {$0 + $1.glicemia}))! / Int16(reports!.count)
-        glycemiaLabel.text = "\(glicemia)"
-        let pressioneMin = (reports?.reduce(0, {$0 + $1.pressioneMin}))! / Int16(reports!.count)
-        pMinLabel.text = "\(pressioneMin)"
-        let pressioneMax = (reports?.reduce(0, {$0 + $1.pressioneMax}))! / Int16(reports!.count)
-        pMaxLabel.text = "\(pressioneMax)"
-        let battito = (reports?.reduce(0, {$0 + $1.battito}))! / Int16(reports!.count)
-        heartRateLabel.text = "\(battito)"
+        reportLabel.text = "Valori medi del giorno " + data
+        
+        let temperatura = model.mediaTemperatura(reports: reports!)
+        temperatureLabel.text = (temperatura != nil) ? "\(temperatura!)" : "N/A"
+        
+        let glicemia = model.mediaGlicemia(reports: reports!)
+        glycemiaLabel.text = (glicemia != nil) ? "\(glicemia!)" : "N/A"
+        
+        let pMin = model.mediaPressioneMin(reports: reports!)
+        pMinLabel.text = (pMin != nil) ? "\(pMin!)" : "N/A"
+        
+        let pMax = model.mediaPressioneMax(reports: reports!)
+        pMaxLabel.text = (pMax != nil) ? "\(pMax!)" : "N/A"
+        
+        let battito = model.mediaBattito(reports: reports!)
+        heartRateLabel.text = (battito != nil) ? "\(battito!)" : "N/A"
+
     }
 
 }

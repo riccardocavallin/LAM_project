@@ -34,7 +34,7 @@ class NotificationPublisher {
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
-        dateComponents.hour = day
+        dateComponents.day = day
         dateComponents.hour = hour
         dateComponents.minute = minute
         
