@@ -16,7 +16,7 @@ class Retrieve {
     private let defaults = UserDefaults.standard
     
     // restituisce tutti i report
-    private func findReports() -> [Report]? {
+    func findReports() -> [Report]? {
         let request: NSFetchRequest<Report> = Report.fetchRequest()
         request.predicate = NSPredicate(value: true)
         // filtrati in ordine di inserimento

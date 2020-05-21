@@ -15,7 +15,7 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var infoTextArea: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
-    var pickerData = ["1","2","3","4","5"]
+    var pickerData = ["Tutti", "1","2","3","4","5"]
     let model = Retrieve()
     var reports : [Report]?
     
@@ -27,6 +27,7 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
+        reports = model.findReports()
     }
     
     // funzioni della classe UIPickerViewDataSource
@@ -47,8 +48,12 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // azioni da fare quando viene selazionato un elemento
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let priority = row + 1
-        reports = model.findReportsByPriority(matching: priority)
+        let priority = row
+        if row == 0 { // "Tutti"
+            reports = model.findReports()
+        } else {
+            reports = model.findReportsByPriority(matching: priority)
+        }
         self.tableView.reloadData()
     }
     
