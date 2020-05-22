@@ -151,58 +151,58 @@ class FormViewController: UIViewController {
 				let today = calendar.component(.day, from: Date())
 				let giornoScadenza = calendar.component(.day, from: scadenza)
 				let parametro = defaults.integer(forKey: "parametro")
-				let result = model.media(parametro: parametro) as! Int16
-				let soglia = defaults.integer(forKey: "soglia")
+				let result = model.media(parametro: parametro) as? Double
+				let soglia = Double(defaults.integer(forKey: "soglia"))
 				var body = ""
 			
-			if today >= giornoScadenza {
+			if result == nil && today >= giornoScadenza {
+				body = "Non è stato possibile effettuare il monitoraggio perchè non hai inserito i valori necessari."
+			}
+			else if today >= giornoScadenza {
 				switch parametro {
 					
 				case 0: // temperatura
-					if result > soglia {
-						body = "La temperatura media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+
+					if result! > soglia {
+						body = "La temperatura media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La temperatura media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La temperatura media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 1: // pressione minima
-					if result > soglia {
-						body = "La pressione minima media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La pressione minima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La pressione minima media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La pressione minima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 2: // pressione massima
-					if result > soglia {
-						body = "La pressione massima media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La pressione massima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La pressione massima media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La pressione massima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 3: // glicemia
-					if result > soglia {
-						body = "La glicemia media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La glicemia media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La glicemia media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La glicemia media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 4: // battito
-					if result > soglia {
-						body = "Il battito cardiaco medio monitorato è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "Il battito cardiaco medio monitorato è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! Il battito cardiaco medio monitorato è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! Il battito cardiaco medio monitorato è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				default:
 					print("Default case")
 				}
 				
 			}
+			notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 		}
 		
 	}

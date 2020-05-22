@@ -72,7 +72,11 @@ class Retrieve {
         // calcolo la media adeguata in base al parametro da monitorare
         switch parametro {
         case 0:
-            result = mediaTemperatura(reports: reports)
+            if let tempMedia = mediaTemperatura(reports: reports) {
+                 result = Double(truncating: tempMedia as NSNumber)
+            } else {
+                result = nil
+            }
         case 1:
             result =  mediaPressioneMin(reports: reports)
         case 2:
