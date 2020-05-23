@@ -31,7 +31,7 @@ class SummaryPopUpViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func setLabels() {
+    private func setLabels() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-YYYY"

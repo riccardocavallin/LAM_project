@@ -33,25 +33,41 @@ class FormViewController: UIViewController {
 	
 	private func setupAddTargetIsNotEmptyTextFields() {
 		okButton.isEnabled = false
-		temperatureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-		minPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-		maxPressureField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-		glycemiaField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-		heartRateField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+		temperatureField.addTarget(self, action: #selector(textFieldsIsValid), for: .editingChanged)
+		minPressureField.addTarget(self, action: #selector(textFieldsIsValid), for: .editingChanged)
+		maxPressureField.addTarget(self, action: #selector(textFieldsIsValid), for: .editingChanged)
+		glycemiaField.addTarget(self, action: #selector(textFieldsIsValid), for: .editingChanged)
+		heartRateField.addTarget(self, action: #selector(textFieldsIsValid), for: .editingChanged)
 	}
 	
 	// attiva il bottone all'inserimento dei dati
-	@objc func textFieldsIsNotEmpty(sender: UITextField) {
+	@objc func textFieldsIsValid(sender: UITextField) {
 		
 		sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-		var count = 0
-		if let temperatura = temperatureField.text, !temperatura.isEmpty { count += 1 }
-		if let pressioneMin = minPressureField.text, !pressioneMin.isEmpty { count += 1 }
-		if let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty { count += 1 }
-		if let glicemia = glycemiaField.text, !glicemia.isEmpty { count += 1 }
-		if let battito = heartRateField.text, !battito.isEmpty { count += 1 }
+		var count = 0 // conta quanti campi sono compilati
+		var goOn = true // verifica se l'input è valido e può essere usato
+		if let temperatura = temperatureField.text, !temperatura.isEmpty {
+			count += 1
+			goOn = temperatura.isDecimal ? true : false
+		}
+		if let pressioneMin = minPressureField.text, !pressioneMin.isEmpty {
+			count += 1
+			goOn = pressioneMin.isDecimal ? true : false
+		}
+		if let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty {
+			count += 1
+			goOn = pressioneMax.isDecimal ? true : false
+		}
+		if let glicemia = glycemiaField.text, !glicemia.isEmpty {
+			count += 1
+			goOn = glicemia.isDecimal ? true : false
+		}
+		if let battito = heartRateField.text, !battito.isEmpty {
+			count += 1
+			goOn = battito.isDecimal ? true : false
+		}
 		
-		if count >= 2 {
+		if count >= 2 && goOn {
 			self.okButton.isEnabled = true
 		} else {
 			self.okButton.isEnabled = false
@@ -151,57 +167,57 @@ class FormViewController: UIViewController {
 				let today = calendar.component(.day, from: Date())
 				let giornoScadenza = calendar.component(.day, from: scadenza)
 				let parametro = defaults.integer(forKey: "parametro")
-				let result = model.media(parametro: parametro) as! Int16
-				let soglia = defaults.integer(forKey: "soglia")
+				let result = model.media(parametro: parametro) as? Double
+				let soglia = Double(defaults.integer(forKey: "soglia"))
 				var body = ""
 			
-			if today >= giornoScadenza {
+			if result == nil && today >= giornoScadenza {
+				body = "Non è stato possibile effettuare il monitoraggio perchè non hai inserito i valori necessari."
+				notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+			}
+			else if today >= giornoScadenza {
 				switch parametro {
 					
 				case 0: // temperatura
-					if result > soglia {
-						body = "La temperatura media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+
+					if result! > soglia {
+						body = "La temperatura media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La temperatura media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La temperatura media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 1: // pressione minima
-					if result > soglia {
-						body = "La pressione minima media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La pressione minima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La pressione minima media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La pressione minima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 2: // pressione massima
-					if result > soglia {
-						body = "La pressione massima media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La pressione massima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La pressione massima media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La pressione massima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 3: // glicemia
-					if result > soglia {
-						body = "La glicemia media monitorata è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "La glicemia media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! La glicemia media monitorata è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! La glicemia media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				case 4: // battito
-					if result > soglia {
-						body = "Il battito cardiaco medio monitorato è \(result). È più alta rispetto al valore soglia impostato a \(soglia)."
+					if result! > soglia {
+						body = "Il battito cardiaco medio monitorato è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
-						body = "Complimenti! Il battito cardiaco medio monitorato è \(result). Hai rispettato il valore soglia di \(soglia)."
+						body = "Complimenti! Il battito cardiaco medio monitorato è \(result!). Hai rispettato il valore soglia di \(soglia)."
 					}
-					notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 					
 				default:
 					print("Default case")
 				}
-				
+				notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
 			}
 		}
 		
@@ -218,4 +234,17 @@ class FormViewController: UIViewController {
 	}
 
 
+}
+
+// extensions per verificare se una stringa è un Int o Double
+extension String {
+    var isInt: Bool {
+        return Int(self) != nil
+    }
+}
+
+extension String {
+    var isDecimal: Bool {
+		return Double(self) != nil
+	}
 }

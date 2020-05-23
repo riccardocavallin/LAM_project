@@ -23,6 +23,10 @@ class EditFormViewController: UIViewController {
     
     // oggetto report da modificare passato dal FirstViewController
     var report:Report? = nil
+    // variabile per accedere alle preferenze dell'utente
+    private let defaults = UserDefaults.standard
+    private let model = Retrieve()
+    let notificationPublisher = NotificationPublisher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +47,7 @@ class EditFormViewController: UIViewController {
      sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
 
      guard
-        let temperatura = temperatureField.text, !temperatura.isEmpty,
+        let temperatura = temperatureField.text, !temperatura.isEmpty, 
         let pressioneMin = minPressureField.text, !pressioneMin.isEmpty,
         let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty,
         let glicemia = glycemiaField.text, !glicemia.isEmpty,
@@ -118,7 +122,75 @@ class EditFormViewController: UIViewController {
             fatalError("Errore nel salvataggio: \(error)")
         }
         
+        checkForMonitor()
+        
     }
+    
+    // funzione che verifica se la data odierna è quella di scadenza del monitoraggio
+    // in tal caso manda una notifica con il risultato
+    private func checkForMonitor() {
+        if let scadenza = defaults.object(forKey: "scadenza") as? Date {
+            let calendar = Calendar.current
+                let today = calendar.component(.day, from: Date())
+                let giornoScadenza = calendar.component(.day, from: scadenza)
+                let parametro = defaults.integer(forKey: "parametro")
+                let result = model.media(parametro: parametro) as? Double
+                let soglia = Double(defaults.integer(forKey: "soglia"))
+                var body = ""
+            
+            if result == nil && today >= giornoScadenza {
+                body = "Non è stato possibile effettuare il monitoraggio perchè non hai inserito i valori necessari."
+                notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+            }
+            else if today >= giornoScadenza {
+                switch parametro {
+                    
+                case 0: // temperatura
+
+                    if result! > soglia {
+                        body = "La temperatura media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
+                    } else {
+                        body = "Complimenti! La temperatura media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
+                    }
+                    
+                case 1: // pressione minima
+                    if result! > soglia {
+                        body = "La pressione minima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
+                    } else {
+                        body = "Complimenti! La pressione minima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
+                    }
+                    
+                case 2: // pressione massima
+                    if result! > soglia {
+                        body = "La pressione massima media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
+                    } else {
+                        body = "Complimenti! La pressione massima media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
+                    }
+                    
+                case 3: // glicemia
+                    if result! > soglia {
+                        body = "La glicemia media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
+                    } else {
+                        body = "Complimenti! La glicemia media monitorata è \(result!). Hai rispettato il valore soglia di \(soglia)."
+                    }
+                    
+                case 4: // battito
+                    if result! > soglia {
+                        body = "Il battito cardiaco medio monitorato è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
+                    } else {
+                        body = "Complimenti! Il battito cardiaco medio monitorato è \(result!). Hai rispettato il valore soglia di \(soglia)."
+                    }
+                    
+                default:
+                    print("Default case")
+                }
+              notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+            }
+            
+        }
+        
+    }
+
     
     private func resetLabels() {
         // reset delle labels
