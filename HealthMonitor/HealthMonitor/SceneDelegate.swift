@@ -55,14 +55,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 				//print("The user opened the app from the notification")
 				// tolgo 1 al badge di notifica
 				UIApplication.shared.applicationIconBadgeNumber -= 1
-				//let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController
-				if  let vc = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController {
-					//						let rootViewController = self.window!.rootViewController as! UITabBarController
-					//						let navController = rootViewController.selectedViewController as? UINavigationController
-					
-					window?.rootViewController = vc
-					window?.makeKeyAndVisible()
-				}
+				
+				if  let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController,
+					let tabBarController = self.window?.rootViewController as? UITabBarController,
+					let navController = tabBarController.selectedViewController as? UINavigationController {
+					navController.pushViewController(formVC, animated: true)
+					UIApplication.shared.windows.first?.rootViewController = navController
+					UIApplication.shared.windows.first?.makeKeyAndVisible()
+//					window?.rootViewController = navController
+//					window?.makeKeyAndVisible()
+			}
 				completionHandler()
 			case "posticipa": // utente ha cliccato sull'action per posticipare
 				// tolgo 1 al badge di notifica
