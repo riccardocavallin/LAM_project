@@ -131,18 +131,21 @@ class EditFormViewController: UIViewController {
     private func checkForMonitor() {
         if let scadenza = defaults.object(forKey: "scadenza") as? Date {
             let calendar = Calendar.current
-                let today = calendar.component(.day, from: Date())
-                let giornoScadenza = calendar.component(.day, from: scadenza)
-                let parametro = defaults.integer(forKey: "parametro")
-                let result = model.media(parametro: parametro) as? Double
-                let soglia = Double(defaults.integer(forKey: "soglia"))
-                var body = ""
+            let today = calendar.component(.day, from: Date())
+            let giornoScadenza = calendar.component(.day, from: scadenza)
+            let parametro = defaults.integer(forKey: "parametro")
+            let result = model.media(parametro: parametro) as? Double
+            let soglia = Double(defaults.integer(forKey: "soglia"))
+            var body = ""
+            let monitora = defaults.bool(forKey: "monitora")
             
-            if result == nil && today >= giornoScadenza {
+            if result == nil && today >= giornoScadenza && monitora {
                 body = "Non è stato possibile effettuare il monitoraggio perchè non hai inserito i valori necessari."
                 notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+                // pongo fine al monitoraggio
+                defaults.set(false, forKey: "monitora")
             }
-            else if today >= giornoScadenza {
+            else if today >= giornoScadenza && monitora {
                 switch parametro {
                     
                 case 0: // temperatura
@@ -184,7 +187,9 @@ class EditFormViewController: UIViewController {
                 default:
                     print("Default case")
                 }
-              notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+                notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+                // pongo fine al monitoraggio
+                defaults.set(false, forKey: "monitora")
             }
             
         }

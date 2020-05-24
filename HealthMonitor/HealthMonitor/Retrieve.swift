@@ -66,8 +66,9 @@ class Retrieve {
         let partenza = Calendar.current.date(byAdding: dateComponent, to: scadenza)
         // estraggo tutti i report dell'ultima settimana
         let request: NSFetchRequest<Report> = Report.fetchRequest()
-        request.predicate = NSPredicate(format: "data > %@ AND data < %@", partenza! as NSDate, scadenza as NSDate)
+        request.predicate = NSPredicate(format: "data >= %@ AND data <= %@", partenza! as NSDate, scadenza as NSDate)
         let reports = try! context.fetch(request)
+        print(reports)
         
         // calcolo la media adeguata in base al parametro da monitorare
         switch parametro {
