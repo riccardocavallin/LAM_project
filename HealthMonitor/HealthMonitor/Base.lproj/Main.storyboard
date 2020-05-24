@@ -698,7 +698,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPJ-Db-gIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GCk-E8-Am0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="-765"/>
+            <point key="canvasLocation" x="2259" y="-773"/>
         </scene>
         <!--Grafici-->
         <scene sceneID="wg7-f3-ORb">
