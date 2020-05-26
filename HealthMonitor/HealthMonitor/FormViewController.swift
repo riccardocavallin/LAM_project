@@ -167,7 +167,7 @@ class FormViewController: UIViewController {
 			let today = calendar.component(.day, from: Date())
 			let giornoScadenza = calendar.component(.day, from: scadenza)
 			let parametro = defaults.integer(forKey: "parametro")
-			let result = model.media(parametro: parametro) as? Double
+			var result = model.media(parametro: parametro) as? Double
 			let soglia = Double(defaults.integer(forKey: "soglia"))
 			var body = ""
 			let monitora = defaults.bool(forKey: "monitora")
@@ -179,10 +179,14 @@ class FormViewController: UIViewController {
 				defaults.set(false, forKey: "monitora")
 			}
 			else if today >= giornoScadenza && monitora {
+				
+				// arrotondamento del risultato alla 3 cifra decimale
+				result = Double(round(1000*result!)/1000)
+				
 				switch parametro {
 					
 				case 0: // temperatura
-
+					
 					if result! > soglia {
 						body = "La temperatura media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
