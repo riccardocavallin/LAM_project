@@ -48,23 +48,23 @@ class FormViewController: UIViewController {
 		var goOn = true // verifica se l'input è valido e può essere usato
 		if let temperatura = temperatureField.text, !temperatura.isEmpty {
 			count += 1
-			goOn = temperatura.isDecimal ? true : false
+			goOn = temperatura.isDecimal && goOn ? true : false
 		}
 		if let pressioneMin = minPressureField.text, !pressioneMin.isEmpty {
 			count += 1
-			goOn = pressioneMin.isDecimal ? true : false
+			goOn = pressioneMin.isDecimal && goOn ? true : false
 		}
 		if let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty {
 			count += 1
-			goOn = pressioneMax.isDecimal ? true : false
+			goOn = pressioneMax.isDecimal && goOn  ? true : false
 		}
 		if let glicemia = glycemiaField.text, !glicemia.isEmpty {
 			count += 1
-			goOn = glicemia.isDecimal ? true : false
+			goOn = glicemia.isDecimal && goOn  ? true : false
 		}
 		if let battito = heartRateField.text, !battito.isEmpty {
 			count += 1
-			goOn = battito.isDecimal ? true : false
+			goOn = battito.isDecimal && goOn  ? true : false
 		}
 		
 		if count >= 2 && goOn {
