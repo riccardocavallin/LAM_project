@@ -11,9 +11,13 @@ import CoreData
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate  {
+	
+	private let notificationPublisher = NotificationPublisher()
+	private let defaults = UserDefaults.standard
 	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		UNUserNotificationCenter.current().delegate = self
 		// tastiera che si adatta alla view
 		IQKeyboardManager.shared.enable = true
 		IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Fine"
@@ -21,7 +25,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         return true
     }
-
+	
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+					//print("Sto per mandare la notifica")
+					completionHandler([.badge, .sound, .alert])
+		}
+				
+		func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+			
+			guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+				return
+			}
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			
+			completionHandler()
+			let identifier = response.actionIdentifier
+			let idNotifica = response.notification.request.identifier
+			
+			if idNotifica == "reportReminder" {
+				switch identifier {
+					
+				case UNNotificationDismissActionIdentifier: // notifica cancellata
+					// tolgo 1 al badge di notifica
+					//print("The notification was dismissed")
+					completionHandler()
+					
+				case UNNotificationDefaultActionIdentifier: // notifica viene aperta
+					//print("The user opened the app from the notification")
+					// tolgo 1 al badge di notifica
+					UIApplication.shared.applicationIconBadgeNumber -= 1
+					
+					if  let formVC = storyboard.instantiateViewController(withIdentifier: "Form") as? FormViewController,
+						let tabBarController = rootViewController as? UITabBarController,
+						let navController = tabBarController.selectedViewController as? UINavigationController {
+						navController.pushViewController(formVC, animated: true)
+				}
+					completionHandler()
+				case "posticipa": // utente ha cliccato sull'action per posticipare
+					// tolgo 1 al badge di notifica
+					UIApplication.shared.applicationIconBadgeNumber -= 1
+					let date = Date()
+					let calendar = Calendar.current
+					let dayCurrent = calendar.component(.day, from: date)
+					let hour = defaults.integer(forKey: "oraNotificaReport")
+					let minute = defaults.integer(forKey: "minutoNotificaReport")
+					// imposto una nuova notifica fra 30 minuti
+					notificationPublisher.sendReportReminderNotification(title: "Report giornaliero", body: "Inserisci il tuo report odierno", badge: 1, sound: .default, day: dayCurrent , hour: hour, minute: minute + 30, id: "reportReminder", idAction: "posticipa", idTitle: "Posticipa")
+					completionHandler()
+					
+				default:
+					print("Default case")
+					completionHandler()
+					
+				}
+			}
+		}
 
     // MARK: UISceneSession Lifecycle
 

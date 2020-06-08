@@ -53,20 +53,19 @@ class Retrieve {
         return filtered
     }
     
-    //funzione che ritorna la media degli ultimi x giorni di un dato parametro
+    // funzione che ritorna la media degli ultimi x giorni di un dato parametro
     func media(parametro: Int) -> Any? {
         let result: Any?
         // calcolo della data di partenza per estrarre i dati
         let durata = defaults.integer(forKey: "durata")
-        let scadenza = defaults.object(forKey: "scadenza") as! Date
         let parametro = defaults.integer(forKey: "parametro")
         var dateComponent = DateComponents()
-        dateComponent.day = -durata
+        dateComponent.day = -5//durata
         // la data di partenza è la scadenza (oggi) - la durata
-        let partenza = Calendar.current.date(byAdding: dateComponent, to: scadenza)
-        // estraggo tutti i report dell'ultima settimana
+        let partenza = Calendar.current.date(byAdding: dateComponent, to: Date())
+        // estraggo tutti i report nell'intervallo specificato
         let request: NSFetchRequest<Report> = Report.fetchRequest()
-        request.predicate = NSPredicate(format: "data > %@ AND data < %@", partenza! as NSDate, scadenza as NSDate)
+        request.predicate = NSPredicate(format: "data >= %@ AND data <= %@", partenza! as NSDate, NSDate())
         let reports = try! context.fetch(request)
         
         // calcolo la media adeguata in base al parametro da monitorare

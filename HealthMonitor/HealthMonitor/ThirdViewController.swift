@@ -144,6 +144,7 @@ class ThirdViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         defaults.set(durata, forKey: "durata")
         defaults.set(scadenza, forKey: "scadenza")
         defaults.set(soglia, forKey: "soglia")
+        defaults.set(true, forKey: "monitora")
         resetLabels()
     }
     

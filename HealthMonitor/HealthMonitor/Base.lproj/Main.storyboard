@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="dark"/>
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="fnL-7p-rbW" userLabel="Filter View Controller Scene" customClass="FilterViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Po5-wo-WIv" customClass="Filter">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priorità:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-ow-xw4">
@@ -29,7 +29,7 @@
                                 </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3L0-kZ-ZIU">
-                                <rect key="frame" x="434.5" y="62" width="569.5" height="132"/>
+                                <rect key="frame" x="434.5" y="62" width="313.5" height="132"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="nwL-dx-ezH"/>
@@ -47,14 +47,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-JT-p9v">
-                                <rect key="frame" x="20" y="202" width="984" height="506"/>
+                                <rect key="frame" x="20" y="202" width="728" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="2wH-Vd-QLi" customClass="ReportCellWithDate" customModule="HealthMonitor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="984" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2wH-Vd-QLi" id="20J-7e-qio">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJG-UD-Soe" userLabel="dateLabel">
@@ -257,11 +257,11 @@
             <objects>
                 <viewController storyboardIdentifier="First" id="9pv-A4-QxB" customClass="FirstViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="645-pg-QIw" customClass="FSCalendar">
-                                <rect key="frame" x="19" y="113" width="986" height="141"/>
+                                <rect key="frame" x="19" y="113" width="730" height="397"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
@@ -276,17 +276,17 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dxX-FU-afr">
-                                <rect key="frame" x="0.0" y="254" width="1024" height="464"/>
+                                <rect key="frame" x="0.0" y="510" width="768" height="464"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="464" id="QsF-5o-6aV"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" rowHeight="100" id="o1K-Nj-wjn" customClass="ReportTableViewCell" customModule="HealthMonitor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1024" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="768" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o1K-Nj-wjn" id="U48-I2-C6F">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-Z9-ODd" userLabel="index">
@@ -453,7 +453,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMy-Oi-ohJ">
-                                <rect key="frame" x="975" y="65" width="30" height="48"/>
+                                <rect key="frame" x="719" y="65" width="30" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                 <state key="normal" title="+"/>
                                 <connections>
@@ -469,7 +469,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-sW-HDA" userLabel="Filtra Button">
-                                <rect key="frame" x="448.5" y="65" width="127" height="43"/>
+                                <rect key="frame" x="320.5" y="65" width="127" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Filtra tutti i report"/>
                                 <connections>
@@ -515,23 +515,23 @@
             <objects>
                 <viewController storyboardIdentifier="Form" id="Kcg-yx-DfW" customClass="FormViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S4Y-yV-rxg">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="xht-hB-EJ2" userLabel="Container">
-                                <rect key="frame" x="224.5" y="155" width="575" height="473"/>
+                                <rect key="frame" x="224.5" y="155" width="319" height="729"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-uA-eLh">
-                                        <rect key="frame" x="127" y="0.0" width="321" height="394"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="650"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura corporea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5F-9I-58j">
-                                                <rect key="frame" x="0.0" y="0.0" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ºC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-F5-wKa">
-                                                <rect key="frame" x="0.0" y="33" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="54.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
@@ -539,46 +539,46 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACB-A0-0vO">
-                                                <rect key="frame" x="0.0" y="66.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="109" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXy-TX-eg7">
-                                                <rect key="frame" x="0.0" y="99.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="163.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YH-2Z-vGP">
-                                                <rect key="frame" x="0.0" y="132.5" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="218" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vzG-Z4-0cZ">
-                                                <rect key="frame" x="0.0" y="166" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="272.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuw-CZ-WHV">
-                                                <rect key="frame" x="0.0" y="199" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="327" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mg/dl" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IS8-TE-BXe">
-                                                <rect key="frame" x="0.0" y="232" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="381.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito cardiaco" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-zq-RF4">
-                                                <rect key="frame" x="0.0" y="265.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="436" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Battiti al minuto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQc-CB-kCO">
-                                                <rect key="frame" x="0.0" y="298.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="490.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
@@ -586,13 +586,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bo-LI-XE0">
-                                                <rect key="frame" x="0.0" y="331.5" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="545" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Qualche informazione aggiuntiva da ricordare" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-J6-SfO">
-                                                <rect key="frame" x="0.0" y="365" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="599.5" width="319" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -620,7 +620,7 @@
                                         </variation>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-Lt-dOf">
-                                        <rect key="frame" x="270" y="431" width="35" height="42"/>
+                                        <rect key="frame" x="142" y="687" width="35" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="NNO-b1-H7O"/>
                                         </constraints>
@@ -643,7 +643,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuovo Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-vZ-GbF">
-                                <rect key="frame" x="387" y="70" width="250" height="70"/>
+                                <rect key="frame" x="259" y="70" width="250" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="JKX-6Z-DDq"/>
                                     <constraint firstAttribute="width" constant="250" id="XZQ-Qb-BaZ"/>
@@ -698,27 +698,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPJ-Db-gIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GCk-E8-Am0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="-765"/>
+            <point key="canvasLocation" x="2259" y="-773"/>
         </scene>
         <!--Grafici-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-fP-B0c" userLabel="Temp Stack">
-                                <rect key="frame" x="5" y="30" width="1014" height="450"/>
+                                <rect key="frame" x="5" y="30" width="758" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7p-jL-zCl">
-                                        <rect key="frame" x="0.0" y="0.0" width="1014" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="758" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uip-0W-yKM" userLabel="temperatureChart" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="41.5" width="1014" height="408.5"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="758" height="408.5"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -728,16 +728,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ajx-Q5-lrQ" userLabel="Glycem Stack">
-                                <rect key="frame" x="5" y="500" width="1014" height="450"/>
+                                <rect key="frame" x="5" y="500" width="758" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gq-XI-kuX" userLabel="Glicemia">
-                                        <rect key="frame" x="0.0" y="0.0" width="1014" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="758" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V03-en-OPV" userLabel="glycemiaChart" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="41.5" width="1014" height="408.5"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="758" height="408.5"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -773,24 +773,24 @@
             <objects>
                 <viewController id="BKD-ct-BaA" userLabel="Impostazioni" customClass="ThirdViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z86-a5-T85" userLabel="Third View" customClass="ThirdVi">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orario notifica per inseire report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-gs-PHW">
-                                <rect key="frame" x="362.5" y="74" width="299" height="26.5"/>
+                                <rect key="frame" x="234.5" y="74" width="299" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eik-H6-JyG">
-                                <rect key="frame" x="352" y="115.5" width="320" height="216"/>
+                                <rect key="frame" x="224" y="115.5" width="320" height="216"/>
                                 <locale key="locale" localeIdentifier="it_IT"/>
                                 <connections>
                                     <action selector="valueChanged:" destination="BKD-ct-BaA" eventType="valueChanged" id="lDa-IU-JO9"/>
                                 </connections>
                             </datePicker>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-OV-tmv">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8va-RF-aTQ"/>
                                 </constraints>
@@ -799,7 +799,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attualmente impostato di default alle 19:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9E-2e-81V">
-                                <rect key="frame" x="348.5" y="336.5" width="327.5" height="20.5"/>
+                                <rect key="frame" x="220.5" y="336.5" width="327.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="qtt-HZ-EGE"/>
                                 </constraints>
@@ -808,19 +808,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parametro da monitorare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO7-Gk-oIN">
-                                <rect key="frame" x="395.5" y="417" width="233" height="26.5"/>
+                                <rect key="frame" x="267.5" y="417" width="233" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-Im-g9c" userLabel="Parametro Picker">
-                                <rect key="frame" x="352" y="458.5" width="320" height="150"/>
+                                <rect key="frame" x="224" y="458.5" width="320" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="8SR-ko-CBR"/>
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attualmente non impostato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnY-LX-UTz" userLabel="Parametro Impostato">
-                                <rect key="frame" x="362" y="613.5" width="300" height="20.5"/>
+                                <rect key="frame" x="234" y="613.5" width="300" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="7ot-Oo-6hp"/>
                                 </constraints>
@@ -829,7 +829,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-Fp-fh1" userLabel="Durata Stack">
-                                <rect key="frame" x="421.5" y="664" width="181" height="34"/>
+                                <rect key="frame" x="293.5" y="664" width="181" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Durata:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-hf-JcU">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
@@ -848,7 +848,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-ql-AMh" userLabel="Soglia Stack">
-                                <rect key="frame" x="416.5" y="728" width="191" height="34"/>
+                                <rect key="frame" x="288.5" y="728" width="191" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valore soglia:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-W0-k8J" userLabel="Valore soglia:">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -870,7 +870,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pev-w3-hkV">
-                                <rect key="frame" x="494.5" y="777" width="35" height="42"/>
+                                <rect key="frame" x="366.5" y="777" width="35" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
@@ -947,10 +947,13 @@
                     <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nEJ-JU-RtG">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3TK-ut-hrW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Ghb-LT-VJ8"/>
                     </connections>
@@ -964,23 +967,23 @@
             <objects>
                 <viewController id="zLa-0l-0OB" customClass="EditFormViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fPh-ns-L2U">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="moj-ay-Gws" userLabel="Container">
-                                <rect key="frame" x="351.5" y="155" width="321" height="473"/>
+                                <rect key="frame" x="223.5" y="155" width="321" height="729"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Bsc-Iq-5U2">
-                                        <rect key="frame" x="0.0" y="0.0" width="321" height="394"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="650"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura corporea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfe-Xf-646">
-                                                <rect key="frame" x="0.0" y="0.0" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ºC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-ob-IG0">
-                                                <rect key="frame" x="0.0" y="33" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="54.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
@@ -989,46 +992,46 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione minima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrZ-0k-gOq">
-                                                <rect key="frame" x="0.0" y="66.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="109" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzl-fD-jfo">
-                                                <rect key="frame" x="0.0" y="99.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="163.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressione massima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5p-NR-h2a">
-                                                <rect key="frame" x="0.0" y="132.5" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="218" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mmHg" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bym-TL-5c6">
-                                                <rect key="frame" x="0.0" y="166" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="272.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glicemia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-Yk-Uol">
-                                                <rect key="frame" x="0.0" y="199" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="327" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mg/dl" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rtx-sE-9a4">
-                                                <rect key="frame" x="0.0" y="232" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="381.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battito cardiaco" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed5-iH-lPS">
-                                                <rect key="frame" x="0.0" y="265.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="436" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Battiti al minuto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Naa-fp-chT">
-                                                <rect key="frame" x="0.0" y="298.5" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="490.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
@@ -1037,13 +1040,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDs-Sg-wGO">
-                                                <rect key="frame" x="0.0" y="331.5" width="321" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="545" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Qualche informazione aggiuntiva da ricordare" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PDt-fa-ycf">
-                                                <rect key="frame" x="0.0" y="365" width="321" height="29"/>
+                                                <rect key="frame" x="0.0" y="599.5" width="321" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1054,7 +1057,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xy4-eX-47F">
-                                        <rect key="frame" x="143" y="431" width="35" height="42"/>
+                                        <rect key="frame" x="143" y="687" width="35" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="JNB-Om-ox0"/>
                                         </constraints>
@@ -1077,7 +1080,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modifica report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vai-wK-T5c">
-                                <rect key="frame" x="387" y="70" width="250" height="70"/>
+                                <rect key="frame" x="259" y="70" width="250" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="65p-L7-yTv"/>
                                     <constraint firstAttribute="height" constant="70" id="JFQ-V5-uM7"/>
@@ -1132,11 +1135,11 @@
             <objects>
                 <viewController id="BKP-s6-dYD" userLabel="Summary View Controller" customClass="SummaryPopUpViewController" customModule="HealthMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eTe-i0-PeX">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="728"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KBO-dN-MNO" userLabel="Vertical Stack View">
-                                <rect key="frame" x="206" y="233" width="300" height="262.5"/>
+                                <rect key="frame" x="206" y="361" width="300" height="262.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aMj-rr-C9B" userLabel="TemperaturaStack">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>

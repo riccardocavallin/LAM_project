@@ -48,23 +48,23 @@ class FormViewController: UIViewController {
 		var goOn = true // verifica se l'input è valido e può essere usato
 		if let temperatura = temperatureField.text, !temperatura.isEmpty {
 			count += 1
-			goOn = temperatura.isDecimal ? true : false
+			goOn = temperatura.isDecimal && goOn ? true : false
 		}
 		if let pressioneMin = minPressureField.text, !pressioneMin.isEmpty {
 			count += 1
-			goOn = pressioneMin.isDecimal ? true : false
+			goOn = pressioneMin.isDecimal && goOn ? true : false
 		}
 		if let pressioneMax = maxPressureField.text, !pressioneMax.isEmpty {
 			count += 1
-			goOn = pressioneMax.isDecimal ? true : false
+			goOn = pressioneMax.isDecimal && goOn  ? true : false
 		}
 		if let glicemia = glycemiaField.text, !glicemia.isEmpty {
 			count += 1
-			goOn = glicemia.isDecimal ? true : false
+			goOn = glicemia.isDecimal && goOn  ? true : false
 		}
 		if let battito = heartRateField.text, !battito.isEmpty {
 			count += 1
-			goOn = battito.isDecimal ? true : false
+			goOn = battito.isDecimal && goOn  ? true : false
 		}
 		
 		if count >= 2 && goOn {
@@ -164,22 +164,29 @@ class FormViewController: UIViewController {
 	private func checkForMonitor() {
 		if let scadenza = defaults.object(forKey: "scadenza") as? Date {
 			let calendar = Calendar.current
-				let today = calendar.component(.day, from: Date())
-				let giornoScadenza = calendar.component(.day, from: scadenza)
-				let parametro = defaults.integer(forKey: "parametro")
-				let result = model.media(parametro: parametro) as? Double
-				let soglia = Double(defaults.integer(forKey: "soglia"))
-				var body = ""
+			let today = calendar.component(.day, from: Date())
+			let giornoScadenza = calendar.component(.day, from: scadenza)
+			let parametro = defaults.integer(forKey: "parametro")
+			var result = model.media(parametro: parametro) as? Double
+			let soglia = Double(defaults.integer(forKey: "soglia"))
+			var body = ""
+			let monitora = defaults.bool(forKey: "monitora")
 			
-			if result == nil && today >= giornoScadenza {
+			if result == nil && today >= giornoScadenza && monitora {
 				body = "Non è stato possibile effettuare il monitoraggio perchè non hai inserito i valori necessari."
 				notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+				// pongo fine al monitoraggio
+				defaults.set(false, forKey: "monitora")
 			}
-			else if today >= giornoScadenza {
+			else if today >= giornoScadenza && monitora {
+				
+				// arrotondamento del risultato alla 3 cifra decimale
+				result = Double(round(1000*result!)/1000)
+				
 				switch parametro {
 					
 				case 0: // temperatura
-
+					
 					if result! > soglia {
 						body = "La temperatura media monitorata è \(result!). È più alta rispetto al valore soglia impostato a \(soglia)."
 					} else {
@@ -218,6 +225,8 @@ class FormViewController: UIViewController {
 					print("Default case")
 				}
 				notificationPublisher.sendResultMonitorNotification(title: "Risultati monitoraggio", body: body, badge: 1, sound: .default, secondsLeft: 5, id: "risultatiMonitoraggio")
+				// pongo fine al monitoraggio
+				defaults.set(false, forKey: "monitora")
 			}
 		}
 		
