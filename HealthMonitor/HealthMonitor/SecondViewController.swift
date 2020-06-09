@@ -55,7 +55,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     
     private func createTempChart() {
         let yTemp = yValuesTemp(temperature: temperature!)
-        let setTemp = LineChartDataSet(entries: yTemp, label: "Temperature")
+        let setTemp = LineChartDataSet(entries: yTemp, label: "Temperatura nell'ultima settimana")
         setTemp.drawCirclesEnabled = false
         setTemp.mode = .cubicBezier
         setTemp.lineWidth = 3
@@ -90,7 +90,7 @@ class SecondViewController: UIViewController, ChartViewDelegate {
     
     private func createGlycemChart() {
         let yGlicem = yValuesGlycem(glicemia: glicemia!)
-        let setGlicem = BarChartDataSet(entries: yGlicem, label: "Glicemia")
+        let setGlicem = BarChartDataSet(entries: yGlicem, label: "Glicemia nell'ultima settimana")
         setGlicem.setColor(#colorLiteral(red: 0.08594541997, green: 0.757057488, blue: 0.07849871367, alpha: 0.8329179448))
         setGlicem.highlightColor = .yellow
         let dataGlicem = BarChartData(dataSet: setGlicem)

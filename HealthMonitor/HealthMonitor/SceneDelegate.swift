@@ -1,6 +1,6 @@
-//
 //  SceneDelegate.swift
 //  HealthMonitor
+//
 //
 //  Created by Riccardo Cavallin on 03/05/2020.
 //  Copyright © 2020 Riccardo Cavallin. All rights reserved.
