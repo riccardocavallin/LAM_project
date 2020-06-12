@@ -60,7 +60,7 @@ class Retrieve {
         let durata = defaults.integer(forKey: "durata")
         let parametro = defaults.integer(forKey: "parametro")
         var dateComponent = DateComponents()
-        dateComponent.day = -5//durata
+        dateComponent.day = durata
         // la data di partenza è la scadenza (oggi) - la durata
         let partenza = Calendar.current.date(byAdding: dateComponent, to: Date())
         // estraggo tutti i report nell'intervallo specificato
