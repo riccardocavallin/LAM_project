@@ -30,7 +30,7 @@ class FirstViewController: UIViewController, FSCalendarDelegate {
         super.viewDidLoad()
         calendar.delegate = self
         tableView.delegate = self
-        tableView.dataSource = self
+        tableView.dataSource = self	
         aggiungiReport.isHidden = true
 		summaryButton.isHidden = true
 		tableView.rowHeight = 100

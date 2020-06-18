@@ -87,7 +87,7 @@ class EditFormViewController: UIViewController {
         let context = AppDelegate.viewContext
         
         if temperatureField.text != ""  {
-            let itLocale = Locale(identifier: "it_IT")
+            let itLocale = Locale(identifier: "us_US")
             report!.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
         }
         

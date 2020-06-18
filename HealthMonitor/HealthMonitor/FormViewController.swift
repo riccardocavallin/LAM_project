@@ -115,7 +115,7 @@ class FormViewController: UIViewController {
 			report.battito = 0
 		}
 		
-		let itLocale = Locale(identifier: "it_IT")
+		let itLocale = Locale(identifier: "us_US")
 		if !temperatureField.text!.isEmpty{
 			report.temperatura = NSDecimalNumber(string: temperatureField.text, locale: itLocale)
 			priorita = 4
